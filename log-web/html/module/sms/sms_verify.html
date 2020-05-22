@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>后台-短信验证码</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <link rel="Shortcut Icon" href="../../../img/favicon.ico">
+    <link href="../../../css/base/bootstrap.min.css?v=3.3.5" rel="stylesheet">
+    <link href="../../../css/base/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+    <link href="../../../css/base/animate.min.css" rel="stylesheet">
+    <link href="../../../css/plugins/table/bootstrap-table.css" rel="stylesheet" />
+    <link href="../../../css/plugins/alert/messager.css" rel="stylesheet" />
+    <link href="../../../css/plugins/select/bootstrap-multiselect.css" rel="stylesheet" />
+    <link href="../../../css/plugins/fileinput/fileinput.css" rel="stylesheet">
+    <link href="../../../css/plugins/json-viewer/jquery.json-viewer.css" rel="stylesheet" />
+    <link href="../../../css/style-main.css" rel="stylesheet">
+    <link href="../../../css/style.css" rel="stylesheet">
+    <!--[if lt IE 8]>
+    <meta http-equiv="refresh" content="0;ie.html"/>
+    <![endif]-->
+</head>
+
+<body class="gray-bg" data-js="../../../js/module/maintenance/sms_verify" cache="yes" version="1">
+    <!--数据显示区域-->
+    <div class="wrapper wrapper-content animated fadeInRight">
+        <div class="row" id="main_div">
+            <div class="col-sm-12">
+                <!--数据区域标题-->
+                <div class="ibox-title">
+                    <h5>短信验证码</h5>
+                </div>
+                <!--搜索和添加按钮-->
+                <div class="ibox-content">
+                    <div class="row">
+                        <div id="search-toolbar" class="search-toolbar">
+                            <div class="form-inline" role="form">
+                                
+                                <div class="form-group">
+                                    <button type="button" class="btn btn-search" id="btn_search">
+                                        <i class="fa fa-search"> </i> 刷新
+                                    </button>
+                                </div>
+                            </div>
+                        </div> 
+                        <!--装载列表数据-->
+                        <table id="myTable" class="table-list" data-click-to-select="true" data-show-add="true" data-show-refresh="true" data-show-toggle="true"
+                            data-show-columns="true">
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../../../js/base/require.min.js" defer="" data-main="../../../js/main"></script>
+</body>
+
+</html>

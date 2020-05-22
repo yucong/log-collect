@@ -1,0 +1,34 @@
+<<<<<<< HEAD
+.vscode
+/.vscode/
+=======
+application-prod.yml
+/logs/
+/target/
+!.mvn/wrapper/maven-wrapper.jar
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+mvnx
+mvnx.cmd
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+### NetBeans ###
+/nbproject/private/
+/build/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+>>>>>>> branch 'master' of https://github.com/yucong/common-service.git

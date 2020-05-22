@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>日志系统</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <link rel="Shortcut Icon" href="../img/favicon.ico">
+    <link href="../css/base/bootstrap.min.css?v=3.3.5" rel="stylesheet">
+    <link href="../css/base/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+    <link href="../css/base/animate.min.css" rel="stylesheet">
+    <link href="../css/style-main.css" rel="stylesheet">
+    <link href="../css/style.css" rel="stylesheet">
+    <!-- [if lt IE 8]>
+    <meta http-equiv="refresh" content="0;ie.html"/>
+    <![endif] -->
+</head>
+
+<body class="fixed-sidebar full-height-layout gray-bg" style="overflow:hidden" >
+
+    <!-- 加载等待层 -->
+    <div id="index_loading" class="spiner-example">
+        <div class="sk-spinner sk-spinner-wave">
+            <div class="sk-rect1"></div>
+            <div class="sk-rect2"></div>
+            <div class="sk-rect3"></div>
+            <div class="sk-rect4"></div>
+            <div class="sk-rect5"></div>
+        </div>
+    </div>
+
+    <div id="wrapper" style="display: none;">
+        <!--左侧导航开始-->
+        <nav class="navbar-default navbar-static-side" role="navigation">
+            <div class="nav-close">
+                <i class="fa fa-times-circle"></i>
+            </div>
+            <div class="sidebar-collapse" id="sidebar">
+                <ul class="nav" id="side-menu">
+                    <li class="nav-header">
+                        <div class="dropdown profile-element forum-info">
+                            <span>
+                                <img alt="image" class="logo_img-circle" width='80px' src="../img/logo.png" />
+                            </span>
+                            <a data-toggle="dropdown" class="dropdown-toggle" data-target="#">
+                                <span class="clear">
+                                    <span class="block m-t-xs">
+                                        <strong class="font-bold">YC</strong>
+                                    </span>
+                                </span>
+                            </a>
+                        </div>
+                        <div class="logo-element">YC
+                        </div>
+                    </li>
+                    <li>
+                        <a href="index.html">
+                            <i class="fa fa-home"></i>
+                            <span class="nav-label">主页</span>
+                            <span class="fa"></span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <!--左侧导航结束 -->
+
+        <!--右侧部分开始-->
+        <div id="page-wrapper" class="gray-bg dashbard-1">
+            <div class="row border-bottom">
+                <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0;height: 20px">
+                    <div class="navbar-header">
+                        <a class="navbar-minimalize minimalize-styl-2 btn btn-main" href="javascript:void(0)">
+                            <i class="fa fa-bars"></i>
+                        </a>
+                        <a class="title" style="margin-left:20px;line-height: 68px;" href="javascript:void(0)">
+                            <i style="font-size: 30px;" class="fa fa-question-circle"></i>
+                        </a>
+                        <a class="menu_tit"></a>
+                    </div>
+                    <ul class="nav navbar-top-links navbar-right">
+                        <li class="hidden-sm">
+                            <a href="javascript:void(0)" class="J_tabExit">
+                                <i class="fa fa-user"></i>欢迎:
+                            </a>
+                        </li>
+                        <li class="hidden-sm">
+                            <a href="javascript:void(0)" class="option dropdown-toggle" data-toggle="dropdown">
+                                <label id="u_name"></label>
+                                <i class="fa fa-caret-down"></i>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-user">
+                                <li>
+                                    <a href="javascript:void(0)" id="edit_password">
+                                        <i class="fa fa-key"></i> &nbsp; 修改密码
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="hidden-xs">
+                            <a href="javascript:void(0)" class="     tabExit logout">
+                                <i class="fa fa-sign-out"></i>退出</a>
+                        </li>
+                        <li class="dropdown hidden-xs">
+                            <a class="right-sidebar-toggle" aria-expanded="false">
+                                <i class="fa fa-cog"></i> 设置</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="row J_mainContent" id="content-main">
+                <iframe id="main_iframe" class="J_iframe" name="iframe0" width="100%" height="100%" src="home.html" frameborder="0" data-id="home.html"
+                    seamless></iframe>
+            </div>
+            <div class="footer">
+                <div class="pull-right">&copy; 2018-2019 上海伴美信息科技有限公司
+                </div>
+            </div>
+        </div>
+        <!--右侧部分结束-->
+
+        <!--右侧边栏开始-->
+        <div id="right-sidebar">
+            <div class="sidebar-container">
+                <div class="tab-content">
+                    <div id="tab-1" class="tab-pane active">
+                        <div class="sidebar-title">
+                            <h3>
+                                <i class="fa fa-comments-o"></i> 主题设置</h3>
+                            <small>
+                                <i class="fa fa-tim"></i> 你可以从这里选择和预览主题的布局和样式，这些设置会被保存在本地，下次打开的时候会直接应用这些设置。</small>
+                        </div>
+                        <div class="skin-setttings">
+                            <div class="title">主题设置</div>
+                            <div class="setings-item">
+                                <span>收起左侧菜单</span>
+                                <div class="switch">
+                                    <div class="onoffswitch">
+                                        <input type="checkbox" name="collapsemenu" class="onoffswitch-checkbox" id="collapsemenu">
+                                        <label class="onoffswitch-label" for="collapsemenu">
+                                            <span class="onoffswitch-inner"></span>
+                                            <span class="onoffswitch-switch"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="setings-item">
+                                <span>固定顶部</span>
+                                <div class="switch">
+                                    <div class="onoffswitch">
+                                        <input type="checkbox" name="fixednavbar" class="onoffswitch-checkbox" id="fixednavbar">
+                                        <label class="onoffswitch-label" for="fixednavbar">
+                                            <span class="onoffswitch-inner"></span>
+                                            <span class="onoffswitch-switch"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="setings-item">
+                                <span>
+                                    固定宽度
+                                </span>
+                                <div class="switch">
+                                    <div class="onoffswitch">
+                                        <input type="checkbox" name="boxedlayout" class="onoffswitch-checkbox" id="boxedlayout">
+                                        <label class="onoffswitch-label" for="boxedlayout">
+                                            <span class="onoffswitch-inner"></span>
+                                            <span class="onoffswitch-switch"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 密码修改框 -->
+        <div class="modal fade" id="modal_edit_password" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        <h4 class="modal-title">修改密码</h4>
+                    </div>
+                    <form id="fm_edit_password" method="post" class="form-horizontal" role="form">
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">
+                                    <span class="param-required">*</span>原密码</label>
+                                <div class="col-sm-7">
+                                    <input type="password" id="txtOldPass" name="txtOldPass" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">
+                                    <span class="param-required">*</span>新密码</label>
+                                <div class="col-sm-7">
+                                    <input type="password" id="txtNewPass" name="txtNewPass" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">
+                                    <span class="param-required">*</span>确认密码</label>
+                                <div class="col-sm-7">
+                                    <input type="password" id="txtRePass" name="txtRePass" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-main">确定</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!--右侧边栏结束-->
+    <script src="../js/base/jquery.min.js?v=2.1.4"></script>
+    <script src="../js/base/bootstrap.min.js?v=3.3.5"></script>
+    <script src="../js/plugins/jquery/jquery.cookie.js"></script>
+    <script src="../js/plugins/jquery/jquery.slimscroll.min.js"></script>
+    <script type="text/javascript" src="../js/base/contabs.min.js"></script>
+    <script src="../js/plugins/pace/pace.min.js"></script>
+    <script src="../js/plugins/metisMenu/jquery.metisMenu.js"></script>
+    <script src="../js/base/hplus.min.js?v=4.0.0"></script>
+    <script src="../js/plugins/validator/bootstrapValidator.min.js"></script>
+    <script src="../js/plugins/alert/dialog.js"></script>
+    <script src='../js/plugins/md5/md5.js'></script>
+    <script src='../js/base/base_url.js'></script>
+    <script src="../js/module/index.js"></script>
+</body>

@@ -1,0 +1,31 @@
+
+server:
+  servlet:
+    context-path: /log
+  port: 9002
+  #tomcat:
+    #uri-encoding: UTF-8
+
+
+
+## Spring配置:
+spring:
+  application:
+    name: log-manager
+  http: 
+    encoding:
+      charset: UTF-8 
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+    default-property-inclusion: NON_NULL
+  profiles:
+    #active: dev、prod、test
+    active: prod
+
+
+
+
+
+
+        

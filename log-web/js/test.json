@@ -1,0 +1,16 @@
+{
+    "className":"User",
+    "methodName":"addUser",
+    "paramSet":{
+	"user_01":{
+            "a1":[
+                "张yi",
+                "1471337924226"
+            ],
+            "a2":"马山"
+        },
+        "user_02":"21",
+	"user_03":"男"
+        
+    }
+}

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>后台-用户管理</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <link rel="Shortcut Icon" href="../bm.ico">
+    <link href="../../../css/base/bootstrap.min.css?v=3.3.5" rel="stylesheet">
+    <link href="../../../css/base/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+    <link href="../../../css/base/animate.min.css" rel="stylesheet">
+    <link href="../../../css/plugins/table/bootstrap-table.css" rel="stylesheet" />
+    <link href="../../../css/plugins/alert/messager.css" rel="stylesheet" />
+    <link href="../../../css/plugins/jquery/ztree.css" rel="stylesheet" />
+    <link href="../../../css/style-main.css" rel="stylesheet">
+    <link href="../../../css/style.css" rel="stylesheet">
+    <!--[if lt IE 8]>
+    <meta http-equiv="refresh" content="0;ie.html"/>
+    <![endif]-->
+</head>
+
+<body class="gray-bg" data-js="../../../js/module/system/sys_user">
+
+    <div class="row white-bg dashboard-header">
+        <div class="col-sm-12">
+        </div>
+    </div>
+
+    <div class="wrapper wrapper-content animated fadeInRight">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="ibox-title">
+                    <h5>用户列表</h5>
+                </div>
+                <div class="ibox-content">
+                    <div class="row">
+                        <div id="search-toolbar" class="search-toolbar">
+                            <div class="form-inline" role="form">
+                                <!-- <div class="form-group">
+                                    <input type="text" class="form-control" id="search_cn_name" placeholder="请输入昵称">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" id="search_username" placeholder="请输入用户名">
+                                </div> -->
+                                <div class="form-group">
+                                    <!-- <button type="button" class="btn btn-search" id="btn_search">
+                                        <i class="fa fa-search"> </i> 搜索
+                                    </button> -->
+                                    <button id="btn_add" class="btn btn-add">
+                                        <i class="fa fa-plus"></i> 增加</button>
+                                </div>
+                            </div>
+                        </div>
+                        <table id="myTable" class="table-list" data-click-to-select="true" data-show-add="true" data-show-refresh="true" data-show-toggle="true"
+                            data-show-columns="true">
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title">编辑用户</h4>
+                </div>
+                <form id="fm" method="post" class="form-horizontal" role="form">
+                    <input type="hidden" name="id" />
+
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">用户名</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="cn_name" name="username" placeholder="请输入用户名" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">昵称</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="nickname" name="nickname" placeholder="请输入昵称" />
+                            </div>
+                        </div>
+                        <div class="form-group" id='pass_word'>
+                            <label class="col-sm-2 control-label">密码</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="password" name="password" placeholder="请输入密码" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-main">保存</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="roleModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title">分配角色</h4>
+                </div>
+                <input id="user_id" type="hidden" name="user_id" />
+                <div class="modal-body">
+                    <div>
+                        <label class="col-sm-12 control-label" id='user_name'>用户名：</label>
+                    </div>
+                    <table id="user_role_table" class="table table-bordered">
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-main" id="btn_save_user_role">保存</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="menuModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title">拥有权限</h4>
+                </div>
+                <form method="post" class="form-horizontal" role="form">
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">用户名：</label>
+                            <div class="col-sm-8">
+                                <label id="menu_user_name" class="form-control">-</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">可操作菜单</label>
+                            <div class="col-sm-8">
+                                <ul id="tree" class="ztree" style="width:560px; overflow:auto;"></ul>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../../js/base/require.min.js" defer="" data-main="../../../js/main"></script>
+
+</body>
+
+</html>

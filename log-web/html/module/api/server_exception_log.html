@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>后台-服务器异常日志</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <link rel="Shortcut Icon" href="../img/favicon.ico">
+    <link href="../../../css/base/bootstrap.min.css?v=3.3.5" rel="stylesheet">
+    <link href="../../../css/base/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+    <link href="../../../css/base/animate.min.css" rel="stylesheet">
+    <link href="../../../css/plugins/table/bootstrap-table.css" rel="stylesheet" />
+    <link href="../../../css/plugins/alert/messager.css" rel="stylesheet" />
+    <link href="../../../css/plugins/select/bootstrap-multiselect.css" rel="stylesheet" />
+    <link href="../../../css/plugins/fileinput/fileinput.css" rel="stylesheet">
+    <link href="../../../css/plugins/json-viewer/jquery.json-viewer.css" rel="stylesheet" />
+    <link href="../../../css/style-main.css" rel="stylesheet">
+    <link href="../../../css/style.css" rel="stylesheet">
+    <style>
+        .enable {
+            margin: auto;
+            width: 100px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+    </style>
+    <!--[if lt IE 8]>
+    <meta http-equiv="refresh" content="0;ie.html"/>
+    <![endif]-->
+</head>
+
+<body class="gray-bg" data-js="../../../js/module/api/server_exception_log"  cache="yes" version="1">
+    <!--数据显示区域-->
+    <div class="wrapper wrapper-content animated fadeInRight">
+        <div class="row" id="main_div">
+            <div class="col-sm-12">
+                <!--数据区域标题-->
+                <div class="ibox-title">
+                    <h5>服务异常日志</h5>
+                </div>
+                <!--搜索和添加按钮-->
+                <div class="ibox-content">
+                    <div class="row">
+                        <div id="search-toolbar" class="search-toolbar">
+                            <div class="form-inline" role="form">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" style='width:150px' ; id="s_ip" placeholder="请求IP">
+                                    <input type="text" class="form-control" style='width:150px' ; id="s_request" placeholder="请求URL">
+                                    <input type="text" class="form-control" style='width:150px' ; id="search_userId" placeholder="用户ID">
+                                    <select class="form-control" id="search_platform">
+                                        <option value="">请求来源</option>
+                                        <option value="app">APP服务</option>
+                                        <option value="mini">微信小程序</option>
+                                        <option value="admin">管理后台</option>
+                                        <option value="offical">官网后台</option>
+                                        <option value="task">定时任务</option>
+                                    </select>
+                                    <select class="form-control" id="search_deviceType">
+                                        <option value="">设备类型</option>
+                                        <option value="ios">IOS</option>
+                                        <option value="android">Android</option>
+                                        <option value="web">WEB</option>
+                                    </select>
+                                    <!-- <select class="form-control" id="search_errLevel">
+                                        <option value="">错误等级</option>
+                                        <option value="error">error</option>
+                                        <option value="warn">warn</option>
+                                    </select> -->
+                                    <select class="form-control" id="search_method">
+                                        <option value="">请求方式</option>
+                                        <option value="GET">GET</option>
+                                        <option value="POST">POST</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <button type="button" class="btn btn-search" id="btn_search">
+                                        <i class="fa fa-search"> </i> 搜索
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <!--装载列表数据-->
+                        <table id="myTable" class="table-list" data-click-to-select="true" data-show-add="true" data-show-refresh="true" data-show-toggle="true"
+                            data-show-columns="true">
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style='width:90%;height:95%;'>
+        <div class="modal-dialog">
+            <div class="modal-content" style='width:1000px;height:500px;position:fixed;left:50%;transform:translateX(-50%)'>
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title">堆栈溢出详情</h4>
+                </div>
+                <form id="fm" method="post" class="form-horizontal" role="form">
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <!-- <label class="col-sm-1 control-label">堆栈溢出</label> -->
+                            <div class="col-sm-12">
+                                <textarea rows="14" class="form-control" id="data" name="data"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="../../../js/base/require.min.js" defer="" data-main="../../../js/main"></script>
+</body>
+
+</html>

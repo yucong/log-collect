@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>后台-菜单管理</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <link rel="Shortcut Icon" href="../bm.ico">
+    <link href="../../../css/base/bootstrap.min.css?v=3.3.5" rel="stylesheet">
+    <link href="../../../css/base/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+    <link href="../../../css/base/animate.min.css" rel="stylesheet">
+    <link href="../../../css/plugins/table/bootstrap-table.css" rel="stylesheet" />
+    <link href="../../../css/plugins/alert/messager.css" rel="stylesheet" />
+    <link href="../../../css/plugins/jquery/jquery.treegrid.css" rel="stylesheet" />
+    <link href="../../../css/style-main.css" rel="stylesheet">
+    <link href="../../../css/style.css" rel="stylesheet">
+    <!--[if lt IE 8]>
+    <meta http-equiv="refresh" content="0;ie.html"/>
+    <![endif]-->
+    <style type="text/css">
+        tr:hover {
+            background-color: #F9F9F9;
+        }
+    </style>
+</head>
+
+<body class="gray-bg" data-js="../../../js/module/system/sys_menu">
+
+    <div class="row white-bg dashboard-header">
+        <div class="col-sm-12">
+        </div>
+    </div>
+
+    <div class="wrapper wrapper-content animated fadeInRight">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="ibox-title">
+                    <h5>菜单列表</h5>
+                </div>
+                <div class="ibox-content">
+                    <!-- page start-->
+                    <div class="row">
+                        <div class="col-sm-12 text-right">
+                            <button onclick="javascript:$('#menu_tree').treegrid('expandAll');" class="btn btn-white btn-sm">
+                                <i class="fa fa-plus-square-o"></i> 全部展开
+                            </button>
+                            <button onclick="javascript:$('#menu_tree').treegrid('collapseAll');" class="btn btn-white btn-sm">
+                                <i class="fa fa-minus-square-o"></i> 全部折叠
+                            </button>
+                            <button onclick="javascript:location.reload()" class="btn btn-white btn-sm">
+                                <i class="fa fa-refresh"></i> 刷新菜单栏
+                            </button>
+                            <button onclick="SYS.sys_menu.addChildMenu(0)" class="btn btn-add btn-sm">
+                                <i class="fa fa-plus"></i> 增加一级菜单
+                            </button>
+                        </div>
+                        <div class="col-sm-12">
+                            <section class="panel">
+                                <div id="sys_menu_list">
+                                    <!-- 绑定菜单数据 -->
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+
+                    <script type="text/template" id="tmpl_sys_menu_list">
+                    <table class="table" id="menu_tree">
+                        <thead>
+                        <tr>
+                            <th width="25%">名称</th>
+                            <th width="25%">路径</th>
+                            <th width="25%">排序</th>
+                            <th width="25%">操作</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {{~it:value:index}}
+                        <tr class="treegrid-{{= value.id}}">
+                            <td><i class="fa fa-{{= value.icon_cls}}"> {{= value.menuName}}</i></td>
+                            <td>{{= value.menuPath}}</td>
+                            <td>{{= value.menuSort}}</td>
+                            <td>
+                                {{if(value.id > 0){}}
+                                <a href="javascript:void(0)" onclick="SYS.sys_menu.editDialog('{{= value.id}}')"
+                                   class="text-do-edit"><i class="fa fa-pencil"></i> 编辑</a>
+                                <a href="javascript:void(0)" onclick="SYS.sys_menu.deleteMenu('{{= value.id}}')"
+                                   class="text-do-remove"><i class="fa fa-trash"></i> 删除</a>
+                                <a href="javascript:void(0)" onclick="SYS.sys_menu.addChildMenu('{{= value.id}}')"
+                                   class="text-do-add"><i class="fa fa-plus"> 增加</i></a>
+                                {{}}}
+                            </td>
+                        </tr>
+                        {{~value.children:val:num}}
+                        <tr class="treegrid-{{= val.parentId}}-{{= val.id}} treegrid-parent-{{= val.parentId}}">
+                            <td><i class="fa fa-genderless"> {{= val.menuName}}</i></td>
+                            <td>{{= val.menuPath}}</td>
+                            <td>{{= val.menuSort}}</td>
+                            <td>
+                                {{if(value.id > 0){}}
+                                <a href="javascript:void(0)" onclick="SYS.sys_menu.editDialog('{{= val.id}}')"
+                                   class="text-do-edit"><i class="fa fa-pencil"></i> 编辑</a>
+                                <a href="javascript:void(0)" onclick="SYS.sys_menu.deleteMenu('{{= val.id}}')"
+                                   class="text-do-remove"><i class="fa fa-trash"></i> 删除</a>
+                                <a href="javascript:void(0)" onclick="SYS.sys_menu.addChildMenu('{{= val.id}}')"
+                                   class="text-do-add"><i class="fa fa-plus"> 增加</i></a>
+                                {{}}}
+                            </td>
+                        </tr>
+                        {{~val.children:v:n}}
+                        <tr class="treegrid-parent-{{= val.parentId}}-{{= v.parentId}}">
+                            <td> &nbsp; {{= v.menuName}}</i></td>
+                            <td>{{= v.menuPath}}</td>
+                            <td>{{= v.menuSort}}</td>
+                            <td>
+                                {{if(v.id > 0){}}
+                                <a href="javascript:void(0)" onclick="SYS.sys_menu.editDialog('{{= v.id}}')"
+                                   class="text-do-edit"><i class="fa fa-pencil"></i> 编辑</a>
+                                <a href="javascript:void(0)" onclick="SYS.sys_menu.deleteMenu('{{= v.id}}')"
+                                   class="text-do-remove"><i class="fa fa-trash"></i> 删除</a>
+                                {{}}}
+                            </td>
+                        </tr>
+                        {{~}}
+                        {{~}}
+                        {{~}}
+                        </tbody>
+                    </table>
+                </script>
+                    <!-- page end-->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title">编辑菜单</h4>
+                </div>
+                <form id="fm" method="post" class="form-horizontal" role="form">
+                    <input type="hidden" name="id" />
+                    <input type="hidden" name="parent_id" />
+
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">添加类型</label>
+                            <div class="col-sm-8 m_chose">
+                                <input type="radio" name="itype" value="1" checked>添加菜单
+                                <input type="radio" name="itype" value="2" style="margin-left: 50px">添加按钮
+                            </div>
+                        </div>
+                        <!-- <div class="menu"> -->
+                        <div class="form-group m_name">
+                            <label class="col-sm-2 control-label">菜单名称</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="menu_name" name="menu_name" placeholder="请输入菜单名称" />
+                            </div>
+                        </div>
+                        <div class="form-group m_menu">
+                            <label class="col-sm-2 control-label">菜单路径</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="menu_path" name="menu_path" placeholder="请输入菜单路径" />
+                            </div>
+                        </div>
+                        <div class="form-group m_btn">
+                            <label class="col-sm-2 control-label"><p id="scodeName"></p>
+                            </label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="scode" name="scode" placeholder="请输入代码" />
+                            </div>
+                        </div>
+                        <div class="form-group m_order">
+                            <label class="col-sm-2 control-label">菜单顺序</label>
+
+                            <div class="col-sm-8">
+                                <input type="tel" class="form-control" id="menu_sort" name="menu_sort" placeholder="请输入菜单顺序" />
+                            </div>
+                        </div>
+                        <div class="form-group m_menu">
+                            <label class="col-sm-2 control-label">菜单图标</label>
+
+                            <div class="col-sm-8">
+                                <input type="tel" class="form-control" id="icon_cls" name="icon_cls" placeholder="请输入菜单图标" />
+                            </div>
+                        </div>
+                        <div class="form-group m_menu">
+                            <label class="col-sm-2 control-label">描述</label>
+
+                            <div class="col-sm-8">
+                                <textarea class="form-control" rows="3" id="desc" name="desc" placeholder="请输入菜单功能描述"></textarea>
+                            </div>
+                        </div>
+                        <!-- </div> -->
+                        <!-- <div class="button" style="display: none">
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">按钮名称</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" id="btn_name" name="btn_name" placeholder="请输入菜单名称" />
+                                </div>
+                            </div> -->
+
+                        <!-- </div> -->
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-main">保存</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../../js/base/require.min.js" defer="" data-main="../../../js/main"></script>
+
+</body>
+
+</html>

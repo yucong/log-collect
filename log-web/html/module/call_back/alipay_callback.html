@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>后台-支付宝支付回调日志</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <link rel="Shortcut Icon" href="../img/favicon.ico">
+    <link href="../../../css/base/bootstrap.min.css?v=3.3.5" rel="stylesheet">
+    <link href="../../../css/base/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+    <link href="../../../css/base/animate.min.css" rel="stylesheet">
+    <link href="../../../css/plugins/table/bootstrap-table.css" rel="stylesheet" />
+    <link href="../../../css/plugins/alert/messager.css" rel="stylesheet" />
+    <link href="../../../css/plugins/select/bootstrap-multiselect.css" rel="stylesheet" />
+    <link href="../../../css/plugins/fileinput/fileinput.css" rel="stylesheet">
+    <link href="../../../css/plugins/json-viewer/jquery.json-viewer.css" rel="stylesheet" />
+    <link href="../../../css/style-main.css" rel="stylesheet">
+    <link href="../../../css/style.css" rel="stylesheet">
+    <!--[if lt IE 8]>
+    <meta http-equiv="refresh" content="0;ie.html"/>
+    <![endif]-->
+</head>
+
+<body class="gray-bg" data-js="../../../js/module/maintenance/alipay_callback" cache="yes" version="1">
+    <!--数据显示区域-->
+    <div class="wrapper wrapper-content animated fadeInRight">
+        <div class="row" id="main_div">
+            <div class="col-sm-12">
+                <!--数据区域标题-->
+                <div class="ibox-title">
+                    <h5>支付宝支付回调日志</h5>
+                </div>
+                <!--搜索和添加按钮-->
+                <div class="ibox-content">
+                    <div class="row">
+                        <div id="search-toolbar" class="search-toolbar">
+                            <div class="form-inline" role="form">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" style='width:150px' ; id="s_ip" placeholder="请求IP">
+                                    <input type="text" class="form-control" style='width:150px' ; id="s_request" placeholder="请求URL">
+                                    <input type="text" class="form-control" style='width:150px' ; id="search_userId" placeholder="用户ID">
+                                    <select class="form-control" id="search_deviceType">
+                                        <option value="">设备类型</option>
+                                        <option value="ios">IOS</option>
+                                        <option value="android">Android</option>
+                                        <option value="web">WEB</option>
+                                        <option value="web">mock</option>
+                                    </select>
+                                    <select class="form-control" id="search_method">
+                                        <option value="">请求方式</option>
+                                        <option value="GET">GET</option>
+                                        <option value="POST">POST</option>
+                                    </select>
+                                    <select class="form-control" id="search_state">
+                                        <!-- 2全部，1成功，0异常，-1业务失败，-2登陆失效，-3签名失败 -->
+                                        <option value="2">全部</option>
+                                        <option value="1">成功</option>
+                                        <option value="0">异常</option>
+                                        <option value="-1">业务失败</option>
+                                        <option value="-2">登陆失效</option>
+                                        <option value="-3">签名失败</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <button type="button" class="btn btn-search" id="btn_search">
+                                        <i class="fa fa-search"> </i> 搜索
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <!--装载列表数据-->
+                        <table id="myTable" class="table-list" data-click-to-select="true" data-show-add="true" data-show-refresh="true" data-show-toggle="true"
+                            data-show-columns="true">
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../../../js/base/require.min.js" defer="" data-main="../../../js/main"></script>
+</body>
+
+</html>

@@ -1,0 +1,78 @@
+
+server:
+  context-path: /log
+  port: 9002
+  #tomcat:
+    #uri-encoding: UTF-8
+  session:
+    timeout: 900
+
+
+verCode: 1.1.0.1170 
+envName: test
+#isVerifySign:if check sign
+isVerifySign: false
+isAuthLogin: true
+isSaveLog: true
+isProduct: false
+isSendMQ: true
+logQueueName: logMQ
+businessQueueName: businessTestMQ
+
+spring:  
+  data:
+    mongodb:
+      uri: mongodb://192.168.0.123:27017/serverLog
+  
+  rabbitmq:
+    host: 192.168.0.11
+    port: 5672
+    username: guest
+    password: guest 
+      
+
+
+
+      
+
+server:
+  port: 9002
+  tomcat:
+    uri-encoding: UTF-8 
+  servlet:
+    context-path: /log          
+    session:
+      timeout: 900
+
+env:
+  verCode: 1.1.0.1170 
+  envName: test
+  #isVerifySign:if check sign
+  isVerifySign: false
+  isAuthLogin: true
+  isSaveLog: true
+  isProduct: false
+  isSendMQ: true
+
+
+spring:  
+  data:
+    mongodb:
+      uri: mongodb://alp:alp2019@192.168.2.167:27017/serverLogTest
+  
+  rabbitmq:
+    host: 192.168.2.167
+    port: 5672
+    username: lieping
+    password: Lieping@123
+  
+  # mysql配置
+  datasource:
+    url: jdbc:mysql://192.168.2.168:3306/common_service?useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&useSSL=false
+    username: develop
+    password: 123456
+
+      
+
+
+    

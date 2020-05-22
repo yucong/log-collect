@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+<meta name="renderer" content="webkit" />
+<head>
+<title>pushState demo</title>
+<style>
+    body {
+        font-family: "Microsoft YaHei"; 
+        transition: background-color .3s;
+    }
+    .bg-org {
+        color: #383c3c;
+        background-color: #FF6633;
+    }
+    .bg-blue {
+        color: #fbfaf5;
+        background-color: #6699FF;
+    }
+    .time {
+        margin-top: 20%;
+        text-align: center;
+        font-size: 4em;
+        font-weight: 100;
+    }
+    .switch {
+        margin: auto;
+        width: 30px;
+        height: 30px;
+        position:absolute;
+        bottom:25%;
+        left:0;
+        right:0;
+        cursor:pointer;
+        box-shadow: 0 0 0 5px rgba(255,255,255,.6);
+        border-radius: 50%;
+        transition: box-shadow .1s;
+    }
+    .switch:hover {
+        box-shadow: 0 0 0 5px rgba(255,255,255,.75);
+    }
+    .switch:active {
+        box-shadow: 0 0 0 30px rgba(255,255,255,.4);
+    }
+</style>
+</head>
+ 
+<body class="bg-org">
+    <h1 id="time" class="time">Loading...</h1>
+    <div id="switch" class="switch"></div>
+    <script>
+        
+
+        /**
+         * 1、回显菜单
+         * 2、刷新iframe地址
+         */
+        function reloadMain() {
+            var hash = window.location.hash;
+            if (hash && hash.length > 0) {
+                var flag = hash.substr(1, hash.length);
+                $('body').className = flag;
+            }
+        }
+        reloadMain();
+
+        var time = $('#time');
+        function $(selector) {
+            return document.querySelector(selector);
+        }
+ 
+        // 显示当前时间
+        setInterval(function(){
+            var date = new Date(),
+                format = function(n) {return n<10?'0'+n:n};
+            time.innerHTML = format(date.getHours()) + ' : ' + format(date.getMinutes()) + ' : ' + format(date.getSeconds()); 
+        }, 500);
+ 
+        $('#switch').addEventListener('click', toggleState, false);
+ 
+        // 监听popstate事件
+        history.pushState && window.addEventListener("popstate", function(e) {
+ 
+            // 获取history.state对象中的状态信息
+            // 在这里state将自动成为event的子对象，可直接通过event.state访问
+            var flag = e.state && e.state.title;
+            $('body').className = flag || ($('body').className=='bg-org'?'bg-blue':'bg-org');
+        }, false);
+        
+        function toggleState(e) {
+            var flag = $('body').className=='bg-org'?'bg-blue':'bg-org';
+ 
+            // 新建历史记录，将当前状态信息保存至history.state中
+            //history.pushState && history.pushState({ title: flag }, flag, 'pushState.html?state='+flag.split('-')[1]);
+            history.pushState && history.pushState({ title: flag }, flag, '#'+flag);
+            $('body').className = flag;
+        }
+    </script>
+</body>
+</html>
+
