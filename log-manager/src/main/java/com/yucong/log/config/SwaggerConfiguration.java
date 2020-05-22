@@ -16,8 +16,9 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 
 /**
+   *      成功运行项目后，可通过swagger管理界面查看API接口：
  * 
- * 成功运行项目后，可通过swagger管理界面查看API接口：
+ * 
  * http://localhost:9002/log/swagger-ui.html
  *
  */

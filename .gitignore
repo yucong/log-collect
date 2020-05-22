@@ -1,10 +1,10 @@
-<<<<<<< HEAD
+
 .vscode
 /.vscode/
-=======
+
 application-prod.yml
 /logs/
-*/target/
+/target/
 !.mvn/wrapper/maven-wrapper.jar
 
 ### STS ###
@@ -31,4 +31,4 @@ mvnx.cmd
 /dist/
 /nbdist/
 /.nb-gradle/
->>>>>>> branch 'master' of https://github.com/yucong/common-service.git
+
