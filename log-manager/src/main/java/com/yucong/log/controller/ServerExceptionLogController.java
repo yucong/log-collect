@@ -4,13 +4,17 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.java.common.log.model.HttpRequestLog;
 import com.java.common.log.model.ServerExceptionLog;
 import com.yucong.log.constants.GlobalLog;
 import com.yucong.log.dto.ListServerExceptionLogDTO;
 import com.yucong.log.service.ServerExceptionLogService;
+import com.yucong.log.test.LogDirectProducer;
 import com.yucong.log.vo.common.CommonVO;
 import com.yucong.log.vo.common.DataTableVO;
 
@@ -25,8 +29,22 @@ import com.yucong.log.vo.common.DataTableVO;
 @RequestMapping(value = "serverExceptionLog")
 public class ServerExceptionLogController  {
 
+	
+	@Autowired
+	private LogDirectProducer logDirectProducer;
+	
 	@Autowired
 	private ServerExceptionLogService serverExceptionLogService;
+	
+	
+	/**
+	 * 添加日志
+	 */
+	@PostMapping(value="add")
+	public CommonVO<Object> add(@RequestBody HttpRequestLog httpRequestLog ) {
+		logDirectProducer.produceRequestLog(httpRequestLog);
+		return new CommonVO<Object>();
+	}
 	
 	/**
 	 * 分页查询服务异常日志
