@@ -3,8 +3,8 @@
 /.vscode/
 
 application-prod.yml
-/logs/
-/target/
+*/logs/
+*/target/
 !.mvn/wrapper/maven-wrapper.jar
 
 ### STS ###
