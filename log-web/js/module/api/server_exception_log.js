@@ -36,6 +36,7 @@ define(function (require) {
                 var deviceType = $("#search_deviceType").val();
                 var errLevel = $("#search_errLevel").val();
                 var platform = $("#search_platform").val();
+                var env = $("#search_env").val();
 
                 //将platform保存到webStorage中
                 if(typeof(Storage) != "undefined"){
@@ -60,7 +61,8 @@ define(function (require) {
                         platform: platform,
                         userId: userId ? userId : null,
                         deviceType: deviceType,
-                        errLevel: errLevel
+                        errLevel: errLevel,
+                        env: env
                     },
                     success: function (data) {
                         var obj = {
@@ -94,6 +96,7 @@ define(function (require) {
                                 },
                                 // { field: 'serverIP', title: '服务器IP', align: 'center' },
                                 //{ field: 'method', title: '请求方式', align: 'center' },
+                                { field: 'env', title: '环境', align: 'center' },
                                 { field: 'clientIP', title: '请求IP', align: 'center' },
                                 { field: 'userId', title: '用户ID', align: 'center' },
                                 { field: 'deviceType', title: '设备类型', align: 'center' },
