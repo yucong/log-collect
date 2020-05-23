@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.java.common.log.model.HttpRequestLog;
 import com.java.common.log.model.ServerExceptionLog;
 import com.yucong.log.constants.GlobalLog;
 import com.yucong.log.dto.ListServerExceptionLogDTO;
@@ -41,8 +40,8 @@ public class ServerExceptionLogController  {
 	 * 添加日志
 	 */
 	@PostMapping(value="add")
-	public CommonVO<Object> add(@RequestBody HttpRequestLog httpRequestLog ) {
-		logDirectProducer.produceRequestLog(httpRequestLog);
+	public CommonVO<Object> add(@RequestBody ServerExceptionLog  log ) {
+		logDirectProducer.produceExceptionLog(log);
 		return new CommonVO<Object>();
 	}
 	
