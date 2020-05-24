@@ -151,6 +151,56 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+			
+			<!-- docker maven plugin -->
+			<plugin>
+				<groupId>com.spotify</groupId>
+				<artifactId>docker-maven-plugin</artifactId>
+				<version>0.4.13</version>
+				
+				<!-- 将插件绑定在package上执行 -->
+				<executions>
+					<execution>
+						<id>build-image</id>
+						<phase>package</phase>
+						<goals>
+							<goal>build</goal>
+						</goals>
+					</execution>
+				</executions>
+				
+				<configuration>
+					<!-- 制定镜像名称 -->
+					<imageName>yucong1510/log-manager-test</imageName>
+					<!-- 指定镜像名称和标签 -->
+					<imageTags>
+						<imageTag>0.0.1</imageTag>
+						<imageTag>latest</imageTag>
+					</imageTags>
+					
+					<!-- 重复构建相同标签名称的镜像会覆盖 -->
+					<forceTags>true</forceTags>
+					
+					<!-- 指定Dockerfile所在的路径 -->
+					<dockerDirectory>${project.basedir}/src/main/docker</dockerDirectory>
+					<resources>
+						<resource>
+							<targetPath>/</targetPath>
+							<!-- 用于指定需要复制的根目录，${project.build.directory} 表示target目录 -->
+							<directory>${project.build.directory}</directory>
+							<!-- 用于指定需要复制的文件，${project.build.finalName}.jar 指的是打包后的jar包文件 -->
+							<include>${project.build.finalName}.jar</include>
+						</resource>
+					</resources>
+					
+					<!-- 在maven配置文件settings.xml中配置的server.id一致，用于推送镜像 -->
+					<serverId>docker-hub</serverId>
+					
+				
+				</configuration>
+			</plugin>
+			
+			
 		</plugins>
 	</build>
 	
