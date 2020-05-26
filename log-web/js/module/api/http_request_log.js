@@ -110,6 +110,7 @@ define(function (require) {
                                 //{ field: 'method', title: '请求方式', align: 'center' },
                                 { field: 'env', title: '环境', align: 'center' },
                                 { field: 'clientIP', title: '请求IP', align: 'center' },
+                                { field: 'serverIP', title: '服务IP', align: 'center' },
                                 //{ field: 'platform', title: '请求来源', align: 'center' },
                                 { field: 'userId', title: '用户ID', align: 'center' },
                                 { field: 'deviceType', title: '设备类型', align: 'center' },

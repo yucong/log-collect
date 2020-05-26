@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+    function   ready ( callback ) {
+        // 如果jsbridge已经注入则直接调用 
+        if  ( window . AlipayJSBridge ) {
+            callback   &&   callback ();
+        }  else  {
+            // 如果没有注入则监听注入的事件 
+            document . addEventListener ( 'AlipayJSBridgeReady' ,  callback ,  false );
+        }
+        }
+
+        // startBizService 接口仅在支付宝 10.0.15 及以上支持 
+        // 需要接入者自行做下版本兼容处理 ！！ 
+        function   startAPVerify ( options ,  callback ) {
+        AlipayJSBridge . call ( 'startBizService' , {
+            name :  'open-certify' ,
+            param :  JSON . stringify ( options ),
+        },  callback );
+        }
+
+        /** 
+        * 唤起认证流程 
+        * 参数: certifyId、url 需要通过支付宝 openapi 开放平台网关接口获取 
+        * 详细说明可查看文档下方的参数说明 
+        **/ 
+        ready ( function () {
+        // 需要确保在 AlipayJSBridge ready 之后才调用 
+        startAPVerify ({ 
+            certifyId :  "c1f9a76ad9fcb66d58057b0cab2a62f9" , 
+            url :  "https://openapi.alipay.com/gateway.do?alipay_sdk=alipay-easysdk-java-1.2.1&app_id=2021001160690074&biz_content=%7B%22certify_id%22%3A%22c1f9a76ad9fcb66d58057b0cab2a62f9%22%7D&charset=UTF-8&format=json&method=alipay.user.certify.open.certify&notify_url=https%3A%2F%2Fwww.test.com%2Fcallback&sign=cIz%2B8ZbbkpingwEZi4uY26L5s%2FVWqe4bdZnn0RSfP0qPm314ObQ6F0ae8Ag0A8d51VHfixXzkhFo3kkAZbDARauEhFky5Q6%2FOaSNO9jwy6g08gJuoDYbBIxtK9mM6xYvFeVmQntEVZ6%2BT5IT2BVpjLaEmSHhdXlMDQKmwMS8d9Z2CKahH8MJhz06XAekoMMYm6TObxYIDydwORbtWOrnSC9k3SscpWybPuJ1s7LEf9EBjaMX%2BJCX6rdck0krpULhjCnCG7R833lXkjhgitMtRapDc%2BZr9Rq3AF%2FxG3ODuUM7uXqe6gjW%2BGHnkyaD4uImmaj7kkIWzRTj7RFFIA3xZw%3D%3D&sign_type=RSA2&timestamp=2020-05-26+13%3A27%3A40&version=1.0" 
+            },  function ( verifyResult ) {
+            // 认证结果回调触发, 以下处理逻辑为示例代码，开发者可根据自身业务特性来自行处理 
+            if  ( verifyResult . resultStatus   ===   '9000' ) {
+            // 验证成功，接入方在此处处理后续的业务逻辑 
+            // ... 
+            return ;
+            }
+            
+            // 用户主动取消认证 
+            if  ( verifyResult . resultStatus   ===   '6001' ) {
+            // 可做下 toast 弱提示 
+            return ;
+            }
+            
+            const   errorCode   =   verifyResult . result   &&   verifyResult . result . errorCode ;
+            // 其他结果状态码判断和处理 ... 
+        });
+        });
+    </script>
+</body>
+
+</html>
