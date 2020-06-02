@@ -1,34 +1,37 @@
 server:
   context-path: /log
-  port: 9009
+  port: 9002
   #tomcat:
     #uri-encoding: UTF-8
   session:
     timeout: 900
 
-verCode: 1.1.0.1170 
-envName: test
-#isVerifySign:if check sign
-isVerifySign: false
-isAuthLogin: true
-isSaveLog: true
-isProduct: false
-isSendMQ: true
-requestLogQueueName: request_test
-exceptionLogQueueName: exception_test
-logQueueName: logMQ
-businessQueueName: businessTestMQ
+
+# 系统环境参数配置    
+env:
+  verCode: 1.1.0.1170 
+  envName: prod
+  #isVerifySign:if check sign
+  isVerifySign: false
+  isAuthLogin: true
+  isProduct: false
+  isSendMQ: true
 
 spring:  
   data:
     mongodb:
-      uri: mongodb://111.231.99.72:27017/serverLogProd
+      uri: mongodb://xxx:xxx@47.102.126.118:27017/serverLog
   
   rabbitmq:
-    host: 111.231.99.72
+    host: 47.102.126.118
     port: 5672
-    username: yucong
-    password: wdmm224126
-      
+    username: xxx
+    password: xxx
+  
+  # mysql配置
+  datasource:
+    url: jdbc:mysql://192.168.2.168:3306/common_service?useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&useSSL=false
+    username: develop
+    password: 123456   
 
     
