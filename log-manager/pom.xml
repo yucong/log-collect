@@ -158,8 +158,8 @@
 				<artifactId>docker-maven-plugin</artifactId>
 				<version>0.4.13</version>
 				
-				<!-- 将插件绑定在package上执行 -->
-				<executions>
+				<!-- 将插件绑定在package上执行，不想绑定 -->
+				<!-- <executions>
 					<execution>
 						<id>build-image</id>
 						<phase>package</phase>
@@ -167,7 +167,7 @@
 							<goal>build</goal>
 						</goals>
 					</execution>
-				</executions>
+				</executions> -->
 				
 				<configuration>
 					<!-- 制定镜像名称 -->
