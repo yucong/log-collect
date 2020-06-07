@@ -14,6 +14,9 @@ import com.yucong.log.service.BusinessAbnormalLogService;
 import com.yucong.log.vo.common.CommonVO;
 import com.yucong.log.vo.common.DataTableVO;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+
 
 
 /**
@@ -25,6 +28,7 @@ import com.yucong.log.vo.common.DataTableVO;
  */
 @RestController
 @RequestMapping(value = "businessAbnormalLog")
+@Api(tags = "业务异常日志管理")
 public class BusinessAbnormalLogController  {
 
 	@Autowired
@@ -34,6 +38,7 @@ public class BusinessAbnormalLogController  {
 	 * 分页查询业务异常日志
 	 *  
 	 */
+	@ApiOperation(value="分页查询", notes="根据不同条件搜索分页查询")
 	@GetMapping(value="list")
 	public CommonVO<DataTableVO<BusinessAbnormalLog>> list(@Valid  ListBusinessAbnormalLogDTO dto) {
 		GlobalLog.MY_LOGGER.info("分页查询业务异常日志:" + dto);
