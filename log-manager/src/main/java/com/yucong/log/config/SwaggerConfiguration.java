@@ -52,8 +52,8 @@ public class SwaggerConfiguration {
 
 	private ApiInfo apiInfoTest() {
 		return new ApiInfoBuilder()
-				.title("日志系统接口(BM LOG API)")
-				.description("官网：http://192.168.0.11:8080/web_official/")
+				.title("日志系统接口(Log Manager")
+				.description("管理后台：http://47.102.126.118/html/index.html")
 				.version("1.0")
 				.build();
 	}

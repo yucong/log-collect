@@ -1,5 +1,6 @@
 package com.yucong.log.common.vo;
 
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 /**
@@ -11,8 +12,13 @@ import lombok.Data;
 @Data
 public class CommonVO<T>  {
 
+	@ApiModelProperty(value = "状态码",position = 1,example="1")
 	private int code = 1;
+	
+	@ApiModelProperty(value = "列表数据",position = 2, example ="操作成功")
 	private String message = "操作成功";
+	
+	@ApiModelProperty(value = "数据" ,position = 3)
 	private T data;
 	
 	public T getData() {

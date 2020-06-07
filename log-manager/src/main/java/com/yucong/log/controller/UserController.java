@@ -11,6 +11,8 @@ import com.alibaba.fastjson.JSONObject;
 import com.yucong.log.dto.ListMyMenuDTO;
 import com.yucong.log.dto.LoginDTO;
 
+import io.swagger.annotations.Api;
+
 
 /**
  * 平台用户管理
@@ -21,6 +23,7 @@ import com.yucong.log.dto.LoginDTO;
  */
 @RestController
 @RequestMapping(value = "sys/user")
+@Api(tags = "用户管理")
 public class UserController  {
 
     /**

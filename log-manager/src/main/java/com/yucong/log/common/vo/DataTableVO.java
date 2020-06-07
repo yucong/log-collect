@@ -5,6 +5,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 /**
@@ -16,7 +17,9 @@ import lombok.Data;
 @Data
 public class DataTableVO<T> {
 
+	@ApiModelProperty(value = "分页信息")
     private Map<String,Object> page;
+	
     private List<T> list = new LinkedList<T>();
 
     public DataTableVO() {

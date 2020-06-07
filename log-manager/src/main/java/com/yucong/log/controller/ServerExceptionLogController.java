@@ -17,6 +17,8 @@ import com.yucong.log.entity.ServerExceptionLog;
 import com.yucong.log.service.ServerExceptionLogService;
 import com.yucong.log.test.LogDirectProducer;
 
+import io.swagger.annotations.Api;
+
 /**
  * 服务异常日志管理
  * 
@@ -26,6 +28,7 @@ import com.yucong.log.test.LogDirectProducer;
  */
 @RestController
 @RequestMapping(value = "serverExceptionLog")
+@Api(tags = "服务异常日志管理")
 public class ServerExceptionLogController  {
 
 	

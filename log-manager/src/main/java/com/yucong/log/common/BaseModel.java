@@ -2,43 +2,23 @@ package com.yucong.log.common;
 
 import java.util.Date;
 
+import io.swagger.annotations.ApiModelProperty;
+import lombok.Data;
+
+@Data
 public class BaseModel {
 
-	// 主键ID
+	@ApiModelProperty(value = "主键ID",position = 1,example = "3478374837483")
 	private String id;
-	// 记录ID  
+	
+	@ApiModelProperty(value = "记录ID",position = 2,example = "1")
 	private Long autoId;
-	// 创建时间
+
+	@ApiModelProperty(value = "创建时间",position = 3,example = "1970-01-01 12:25:00")
 	private Date createTime;
-	// 平台
+	
+	@ApiModelProperty(value = "平台",position = 4,example = "后台")
 	private String platform;
-	
-	public String getId() {
-		return id;
-	}
-	public void setId(String id) {
-		this.id = id;
-	}
-	public Long getAutoId() {
-		return autoId;
-	}
-	public void setAutoId(Long autoId) {
-		this.autoId = autoId;
-	}
-	public Date getCreateTime() {
-		return createTime;
-	}
-	public void setCreateTime(Date createTime) {
-		this.createTime = createTime;
-	}
-	public String getPlatform() {
-		return platform;
-	}
-	public void setPlatform(String platform) {
-		this.platform = platform;
-	}
-	
-	
 
 	
 }

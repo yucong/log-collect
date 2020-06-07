@@ -2,102 +2,49 @@ package com.yucong.log.entity;
 
 import com.yucong.log.common.BaseModel;
 
+import io.swagger.annotations.ApiModelProperty;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+
 /**
  * 接口请求日志
  *
  */
+@Data
+@EqualsAndHashCode(callSuper=false)
 public class HttpRequestLog extends BaseModel {
 	
-	// 用户ID
+	@ApiModelProperty(value = "用户ID",position = 5,example = "188")
 	private String userId;
-	// 环境
+	
+	@ApiModelProperty(value = "环境",position = 6,example = "test")
 	private String env;
-	// 客户端版本
+	
+	@ApiModelProperty(value = "客户端版本", position = 7,example = "1.2.0")
 	private String appVersion;
-	// 客户端类型
+	
+	@ApiModelProperty(value = "客户端类型",position = 8,example = "android")
 	private String deviceType;
-	// 客户端IP
+	
+	@ApiModelProperty(value = "客户端IP",position = 9,example= "192.168.1.188")
 	private String clientIP;
-	// 客户端请求URL
+	
+	@ApiModelProperty(value = "客户端请求URL",position = 10,example = "/httpRequestLog/list")
 	private String requestUrl;
-	// 客户端方法
+	
+	@ApiModelProperty(value = "客户端方法",position = 11,example = "GET")
 	private String method;
-	// 服务器ID
+	
+	@ApiModelProperty(value = "服务器ID",position = 12,example = "47.96.20.78")
 	private String serverIP;
-	// 接口请求参数
+	
+	@ApiModelProperty(value = "接口请求参数",position = 13)
 	private String requestParam;
-	// 接口响应参数
+	
+	@ApiModelProperty(value = "接口响应参数",position = 14)
     private Object responseData;
-    // 接口耗时
+
+	@ApiModelProperty(value = "接口耗时",position = 15,example = "60")
  	private long consumeTime;
-	
-	public long getConsumeTime() {
-		return consumeTime;
-	}
-	public void setConsumeTime(long consumeTime) {
-		this.consumeTime = consumeTime;
-	}
-	public String getUserId() {
-		return userId;
-	}
-	public void setUserId(String userId) {
-		this.userId = userId;
-	}
-	public String getEnv() {
-		return env;
-	}
-	public void setEnv(String env) {
-		this.env = env;
-	}
-	public String getAppVersion() {
-		return appVersion;
-	}
-	public void setAppVersion(String appVersion) {
-		this.appVersion = appVersion;
-	}
-	public String getDeviceType() {
-		return deviceType;
-	}
-	public void setDeviceType(String deviceType) {
-		this.deviceType = deviceType;
-	}
-	public String getClientIP() {
-		return clientIP;
-	}
-	public void setClientIP(String clientIP) {
-		this.clientIP = clientIP;
-	}
-	public String getRequestUrl() {
-		return requestUrl;
-	}
-	public void setRequestUrl(String requestUrl) {
-		this.requestUrl = requestUrl;
-	}
-	public String getMethod() {
-		return method;
-	}
-	public void setMethod(String method) {
-		this.method = method;
-	}
-	public String getServerIP() {
-		return serverIP;
-	}
-	public void setServerIP(String serverIP) {
-		this.serverIP = serverIP;
-	}
-	public String getRequestParam() {
-		return requestParam;
-	}
-	public void setRequestParam(String requestParam) {
-		this.requestParam = requestParam;
-	}
-	public Object getResponseData() {
-		return responseData;
-	}
-	public void setResponseData(Object responseData) {
-		this.responseData = responseData;
-	}
-	
-	
 
 }
