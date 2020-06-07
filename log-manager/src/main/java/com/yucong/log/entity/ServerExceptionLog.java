@@ -1,124 +1,56 @@
 package com.yucong.log.entity;
 
-import java.util.Date;
-
 import com.yucong.log.common.BaseModel;
+
+import io.swagger.annotations.ApiModelProperty;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 /**
  * 服务器异常日志
  *
  */
+@Data
+@EqualsAndHashCode(callSuper=false)
 public class ServerExceptionLog extends BaseModel  {
 	
-	//用户ID
+	@ApiModelProperty(value = "用户ID",position = 3,example = "188")
 	private String userId;
-	//环境
+
+	@ApiModelProperty(value = "环境",position = 4,example = "test")
 	private String env;
-	//客户端版本
+
+	@ApiModelProperty(value = "客户端版本",position = 5,example = "1.2.0")
 	private String appVersion;
-	//客户端类型
+
+	@ApiModelProperty(value = "客户端类型",position = 6,example = "android")
 	private String deviceType;
-	// 客户断IP
+
+	@ApiModelProperty(value = "客户端IP",position = 7,example = "192.168.1.188")
 	private String clientIP;
-	// 请求URL
+
+	@ApiModelProperty(value = "请求URL",position = 8,example = "/httpRequestLog/list")
 	private String requestUrl;
-	// 请求方法
+
+	@ApiModelProperty(value = "请求方法",position = 9,example = "GET")
 	private String method;
-	// 服务端IP
+
+	@ApiModelProperty(value = "服务端IP",position = 10,example = "47.96.20.78")
 	private String serverIP;
-	// 请求参数
+
+	@ApiModelProperty(value = "请求参数",position = 11)
 	private String requestParam;
-	// 响应参数
+
+	@ApiModelProperty(value = "响应参数",position = 12)
     private Object responseData;
-    // 异常堆栈信息
+
+	@ApiModelProperty(value = "异常堆栈信息",position = 13)
 	private String stackTrace;
-	// 异常消息
+
+	@ApiModelProperty(value = "异常消息",position = 14)
     private String errMsg;
-    // 异常级别
+
+	@ApiModelProperty(value = "异常级别",position = 15)
     private String errLevel;
-    
-    
-    public ServerExceptionLog() {
-    	super.setCreateTime(new Date());
-    }
-    
-	public String getStackTrace() {
-		return stackTrace;
-	}
-	public void setStackTrace(String stackTrace) {
-		this.stackTrace = stackTrace;
-	}
-	public String getErrMsg() {
-		return errMsg;
-	}
-	public void setErrMsg(String errMsg) {
-		this.errMsg = errMsg;
-	}
-	public String getErrLevel() {
-		return errLevel;
-	}
-	public void setErrLevel(String errLevel) {
-		this.errLevel = errLevel;
-	}
-	public String getUserId() {
-		return userId;
-	}
-	public void setUserId(String userId) {
-		this.userId = userId;
-	}
-	public String getEnv() {
-		return env;
-	}
-	public void setEnv(String env) {
-		this.env = env;
-	}
-	public String getAppVersion() {
-		return appVersion;
-	}
-	public void setAppVersion(String appVersion) {
-		this.appVersion = appVersion;
-	}
-	public String getDeviceType() {
-		return deviceType;
-	}
-	public void setDeviceType(String deviceType) {
-		this.deviceType = deviceType;
-	}
-	public String getClientIP() {
-		return clientIP;
-	}
-	public void setClientIP(String clientIP) {
-		this.clientIP = clientIP;
-	}
-	public String getRequestUrl() {
-		return requestUrl;
-	}
-	public void setRequestUrl(String requestUrl) {
-		this.requestUrl = requestUrl;
-	}
-	public String getMethod() {
-		return method;
-	}
-	public void setMethod(String method) {
-		this.method = method;
-	}
-	public String getServerIP() {
-		return serverIP;
-	}
-	public void setServerIP(String serverIP) {
-		this.serverIP = serverIP;
-	}
-	public String getRequestParam() {
-		return requestParam;
-	}
-	public void setRequestParam(String requestParam) {
-		this.requestParam = requestParam;
-	}
-	public Object getResponseData() {
-		return responseData;
-	}
-	public void setResponseData(Object responseData) {
-		this.responseData = responseData;
-	}
     
 }

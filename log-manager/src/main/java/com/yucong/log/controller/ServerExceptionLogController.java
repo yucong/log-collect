@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.yucong.log.common.vo.BaseVO;
 import com.yucong.log.common.vo.CommonVO;
 import com.yucong.log.common.vo.DataTableVO;
 import com.yucong.log.constants.GlobalLog;
@@ -18,6 +19,7 @@ import com.yucong.log.service.ServerExceptionLogService;
 import com.yucong.log.test.LogDirectProducer;
 
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 
 /**
  * 服务异常日志管理
@@ -43,9 +45,10 @@ public class ServerExceptionLogController  {
 	 * 添加日志
 	 */
 	@PostMapping(value="add")
-	public CommonVO<Object> add(@RequestBody ServerExceptionLog  log ) {
+	@ApiOperation(value="添加日志", notes="添加服务异常日志")
+	public BaseVO add(@RequestBody ServerExceptionLog  log ) {
 		logDirectProducer.produceExceptionLog(log);
-		return new CommonVO<Object>();
+		return new BaseVO();
 	}
 	
 	/**
@@ -53,6 +56,7 @@ public class ServerExceptionLogController  {
 	 *  
 	 */
 	@GetMapping(value="list")
+	@ApiOperation(value="查询日志", notes="多条件搜索查询日志")
 	public CommonVO<DataTableVO<ServerExceptionLog>> listHttpRequest(@Valid ListServerExceptionLogDTO dto) {
 		GlobalLog.MY_LOGGER.info("分页查询服务异常日志:" + dto);
 		return new CommonVO<DataTableVO<ServerExceptionLog>>( serverExceptionLogService.listAll(dto) );

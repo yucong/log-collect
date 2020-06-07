@@ -1,24 +1,18 @@
 package com.yucong.log.common.vo;
 
-import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 /**
  * 公共基础VO
  *  
  * @author 喻聪
- *
+ * @date   2019-05-01
  */
 @Data
-public class CommonVO<T>  {
+@EqualsAndHashCode(callSuper = false)
+public class CommonVO<T> extends BaseVO  {
 
-	@ApiModelProperty(value = "状态码",position = 1,example="1")
-	private int code = 1;
-	
-	@ApiModelProperty(value = "列表数据",position = 2, example ="操作成功")
-	private String message = "操作成功";
-	
-	@ApiModelProperty(value = "数据" ,position = 3)
 	private T data;
 	
 	public T getData() {
@@ -35,7 +29,7 @@ public class CommonVO<T>  {
 	}
 	
 	public CommonVO(String errMsg) {
-		this.code = 0;
+		super.code = 0;
 		this.message = errMsg;
 	}
 	

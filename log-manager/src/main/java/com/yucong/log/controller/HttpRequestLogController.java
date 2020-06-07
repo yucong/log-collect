@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.yucong.log.common.vo.BaseVO;
 import com.yucong.log.common.vo.CommonVO;
 import com.yucong.log.common.vo.DataTableVO;
 import com.yucong.log.constants.GlobalLog;
@@ -44,9 +45,9 @@ public class HttpRequestLogController  {
 	 */
 	@PostMapping(value="add")
 	@ApiOperation(value="添加日志", notes="添加http请求日志")
-	public CommonVO<Object> add(@RequestBody HttpRequestLog httpRequestLog ) {
+	public BaseVO add(@RequestBody HttpRequestLog httpRequestLog ) {
 		logDirectProducer.produceRequestLog(httpRequestLog);
-		return new CommonVO<Object>();
+		return new BaseVO();
 	}
 	
 	
