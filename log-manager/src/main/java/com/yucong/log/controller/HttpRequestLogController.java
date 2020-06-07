@@ -23,7 +23,7 @@ import io.swagger.annotations.ApiOperation;
 
 
 /**
- * 请求日志管理
+ * <p>请求日志管理
  * 
  * @author 喻聪
  * @date   2018-09-13
@@ -41,7 +41,7 @@ public class HttpRequestLogController  {
 	private HttpRequestLogService httpRequestLogService;
 	
 	/**
-	 * 添加日志
+	 * <p>添加日志
 	 */
 	@PostMapping(value="add")
 	@ApiOperation(value="添加日志", notes="添加http请求日志")
@@ -52,7 +52,7 @@ public class HttpRequestLogController  {
 	
 	
 	/**
-	 * 分页查询请求日志
+	 * <p>分页查询请求日志
 	 */
 	@GetMapping(value="list")
 	@ApiOperation(value="查询日志", notes="多条件搜索查询日志")
@@ -60,9 +60,6 @@ public class HttpRequestLogController  {
 		GlobalLog.MY_LOGGER.info("分页查询请求日志:" + dto);
 		return new CommonVO<DataTableVO<HttpRequestLog>>( httpRequestLogService.listAll(dto) );
 	}
-	
-	
-	
 	
 	
 	
