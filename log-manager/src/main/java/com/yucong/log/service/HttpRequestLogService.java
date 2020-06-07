@@ -3,10 +3,10 @@ package com.yucong.log.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.java.common.log.model.HttpRequestLog;
+import com.yucong.log.common.vo.DataTableVO;
 import com.yucong.log.dao.HttpRequestLogDao;
 import com.yucong.log.dto.ListHttpRequestLogDTO;
-import com.yucong.log.vo.common.DataTableVO;
+import com.yucong.log.entity.HttpRequestLog;
 
 @Service
 public class HttpRequestLogService extends BaseService<HttpRequestLog, HttpRequestLogDao> {

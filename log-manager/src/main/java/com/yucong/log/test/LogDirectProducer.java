@@ -6,11 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.alibaba.fastjson.JSON;
-import com.java.common.log.constant.LogConstants;
-import com.java.common.log.model.BusinessAbnormalLog;
-import com.java.common.log.model.HttpRequestLog;
-import com.java.common.log.model.ServerExceptionLog;
-import com.java.common.log.producer.LogAbstractProducer;
+import com.yucong.log.constants.LogConstants;
+import com.yucong.log.entity.BusinessAbnormalLog;
+import com.yucong.log.entity.HttpRequestLog;
+import com.yucong.log.entity.ServerExceptionLog;
+import com.yucong.log.producer.LogAbstractProducer;
 
 @Component
 public class LogDirectProducer extends LogAbstractProducer {

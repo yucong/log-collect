@@ -5,15 +5,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.alibaba.fastjson.JSON;
-import com.java.common.log.model.BusinessAbnormalLog;
-import com.java.common.log.model.HttpRequestLog;
-import com.java.common.log.model.ServerExceptionLog;
-import com.java.common.log.model.SmsSendLog;
 import com.yucong.log.constants.GlobalLog;
+import com.yucong.log.entity.BusinessAbnormalLog;
+import com.yucong.log.entity.HttpRequestLog;
+import com.yucong.log.entity.ServerExceptionLog;
 import com.yucong.log.service.BusinessAbnormalLogService;
 import com.yucong.log.service.HttpRequestLogService;
 import com.yucong.log.service.ServerExceptionLogService;
-import com.yucong.log.service.SmsSendLogService;
 	
 @Component
 public class DirectReceiver {
@@ -24,8 +22,6 @@ public class DirectReceiver {
 	private ServerExceptionLogService serverExceptionLogService;
 	@Autowired
 	private BusinessAbnormalLogService businessAbnormalLogService;
-	@Autowired
-	private SmsSendLogService smsSendLogService;
 	
     @RabbitListener(queues = "request")
     public void processRequestLog(String msg) {
@@ -60,16 +56,6 @@ public class DirectReceiver {
 		}
     }
     
-    @RabbitListener(queues = "sms")
-    public void processSms(String msg) {
-        try {
-			GlobalLog.MY_LOGGER.info("消费sms短信发送记录消息 : " + msg);
-			SmsSendLog log = JSON.parseObject(msg, SmsSendLog.class);
-			smsSendLogService.add(log);
-		} catch (Exception e) {
-			GlobalLog.MY_LOGGER.warn("消费sms短信发送记录消息",e);
-		}
-    }
 
 
 }

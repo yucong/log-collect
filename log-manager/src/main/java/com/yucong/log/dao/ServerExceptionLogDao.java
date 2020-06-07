@@ -9,10 +9,11 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Component;
-import com.java.common.log.model.ServerExceptionLog;
+
 import com.java.util.base.StringUtil;
+import com.yucong.log.common.vo.DataTableVO;
 import com.yucong.log.dto.ListServerExceptionLogDTO;
-import com.yucong.log.vo.common.DataTableVO;
+import com.yucong.log.entity.ServerExceptionLog;
 
 @Component
 public class ServerExceptionLogDao extends BaseDao<ServerExceptionLog> {

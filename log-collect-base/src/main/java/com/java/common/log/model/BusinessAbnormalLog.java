@@ -1,9 +1,7 @@
 package com.java.common.log.model;
 
-import java.io.Serializable;
 import java.util.Date;
 
-import com.java.common.log.base.BaseModel;
 import com.java.common.log.constant.LogConstants;
 
 /**
@@ -11,9 +9,7 @@ import com.java.common.log.constant.LogConstants;
  * 
  * @time
  */
-public class BusinessAbnormalLog extends BaseModel implements Serializable {
-	
-	private static final long serialVersionUID = -5193243310536711416L;
+public class BusinessAbnormalLog  {
 	
 	// 用户ID
 	private String userId;
@@ -51,9 +47,12 @@ public class BusinessAbnormalLog extends BaseModel implements Serializable {
 	// 可能原因
 	private String probableCause;
 
+	// 创建时间
+ 	private Date createTime;
+	
 
 	public BusinessAbnormalLog() {
-		super.setCreateTime(new Date());
+		this.setCreateTime(new Date());
 		this.errorLevel = LogConstants.Level.WARN;
 	}
 	public BusinessAbnormalLog(String platform) {
@@ -178,6 +177,11 @@ public class BusinessAbnormalLog extends BaseModel implements Serializable {
 	public void setErrLevel(String errLevel) {
 		this.errLevel = errLevel;
 	}
-	
+	public Date getCreateTime() {
+		return createTime;
+	}
+	public void setCreateTime(Date createTime) {
+		this.createTime = createTime;
+	}
 
 }

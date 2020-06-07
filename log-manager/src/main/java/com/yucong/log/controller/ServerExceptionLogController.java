@@ -9,13 +9,13 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.java.common.log.model.ServerExceptionLog;
+import com.yucong.log.common.vo.CommonVO;
+import com.yucong.log.common.vo.DataTableVO;
 import com.yucong.log.constants.GlobalLog;
 import com.yucong.log.dto.ListServerExceptionLogDTO;
+import com.yucong.log.entity.ServerExceptionLog;
 import com.yucong.log.service.ServerExceptionLogService;
 import com.yucong.log.test.LogDirectProducer;
-import com.yucong.log.vo.common.CommonVO;
-import com.yucong.log.vo.common.DataTableVO;
 
 /**
  * 服务异常日志管理

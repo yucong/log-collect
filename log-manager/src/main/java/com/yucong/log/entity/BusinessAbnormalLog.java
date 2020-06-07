@@ -1,19 +1,16 @@
-package com.yucong.log.vo;
+package com.yucong.log.entity;
 
-import java.io.Serializable;
 import java.util.Date;
 
-import com.java.common.log.base.BaseModel;
-import com.java.common.log.constant.LogConstants;
+import com.yucong.log.common.BaseModel;
+import com.yucong.log.constants.LogConstants;
 
 /**
  * 业务异常日志
  * 
  * @time
  */
-public class BusinessAbnormalLog extends BaseModel implements Serializable {
-	
-	private static final long serialVersionUID = -5193243310536711416L;
+public class BusinessAbnormalLog extends BaseModel {
 	
 	// 用户ID
 	private String userId;

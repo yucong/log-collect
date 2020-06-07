@@ -6,8 +6,8 @@ import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
 
-import com.java.common.log.base.BaseModel;
-import com.java.common.log.base.SequenceId;
+import com.yucong.log.common.BaseModel;
+import com.yucong.log.common.SequenceId;
 
 
 public abstract class BaseDao <Entity extends BaseModel> {

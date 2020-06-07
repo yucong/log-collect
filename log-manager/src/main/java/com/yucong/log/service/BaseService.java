@@ -2,7 +2,7 @@ package com.yucong.log.service;
 
 import java.util.Date;
 
-import com.java.common.log.base.BaseModel;
+import com.yucong.log.common.BaseModel;
 import com.yucong.log.dao.BaseDao;
 
 

@@ -7,12 +7,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.java.common.log.model.BusinessAbnormalLog;
+import com.yucong.log.common.vo.CommonVO;
+import com.yucong.log.common.vo.DataTableVO;
 import com.yucong.log.constants.GlobalLog;
 import com.yucong.log.dto.ListBusinessAbnormalLogDTO;
+import com.yucong.log.entity.BusinessAbnormalLog;
 import com.yucong.log.service.BusinessAbnormalLogService;
-import com.yucong.log.vo.common.CommonVO;
-import com.yucong.log.vo.common.DataTableVO;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;

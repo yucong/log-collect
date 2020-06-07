@@ -9,9 +9,9 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Component;
 
-import com.java.common.log.model.BusinessAbnormalLog;
+import com.yucong.log.common.vo.DataTableVO;
 import com.yucong.log.dto.ListBusinessAbnormalLogDTO;
-import com.yucong.log.vo.common.DataTableVO;
+import com.yucong.log.entity.BusinessAbnormalLog;
 
 @Component
 public class BusinessAbnormalLogDao extends BaseDao<BusinessAbnormalLog> {

@@ -2,13 +2,11 @@ package com.java.common.log.model;
 
 import java.util.Date;
 
-import com.java.common.log.base.BaseModel;
-
 /**
  * 服务器异常日志
  *
  */
-public class ServerExceptionLog extends BaseModel  {
+public class ServerExceptionLog  {
 	
 	//用户ID
 	private String userId;
@@ -36,10 +34,13 @@ public class ServerExceptionLog extends BaseModel  {
     private String errMsg;
     // 异常级别
     private String errLevel;
-    
+	// 创建时间
+	private Date createTime;
+	// 平台
+	private String platform;
     
     public ServerExceptionLog() {
-    	super.setCreateTime(new Date());
+    	this.setCreateTime(new Date());
     }
     
 	public String getStackTrace() {
@@ -119,6 +120,18 @@ public class ServerExceptionLog extends BaseModel  {
 	}
 	public void setResponseData(Object responseData) {
 		this.responseData = responseData;
+	}
+	public Date getCreateTime() {
+		return createTime;
+	}
+	public void setCreateTime(Date createTime) {
+		this.createTime = createTime;
+	}
+	public String getPlatform() {
+		return platform;
+	}
+	public void setPlatform(String platform) {
+		this.platform = platform;
 	}
     
 }

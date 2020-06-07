@@ -1,12 +1,12 @@
 package com.java.common.log.model;
 
-import com.java.common.log.base.BaseModel;
+import java.util.Date;
 
 /**
  * 接口请求日志
  *
  */
-public class HttpRequestLog extends BaseModel {
+public class HttpRequestLog {
 	
 	// 用户ID
 	private String userId;
@@ -30,6 +30,10 @@ public class HttpRequestLog extends BaseModel {
     private Object responseData;
     // 接口耗时
  	private long consumeTime;
+ 	// 创建时间
+ 	private Date createTime;
+ 	// 平台
+ 	private String platform;
 	
 	public long getConsumeTime() {
 		return consumeTime;
@@ -97,7 +101,17 @@ public class HttpRequestLog extends BaseModel {
 	public void setResponseData(Object responseData) {
 		this.responseData = responseData;
 	}
-	
-	
+	public Date getCreateTime() {
+		return createTime;
+	}
+	public void setCreateTime(Date createTime) {
+		this.createTime = createTime;
+	}
+	public String getPlatform() {
+		return platform;
+	}
+	public void setPlatform(String platform) {
+		this.platform = platform;
+	}
 
 }

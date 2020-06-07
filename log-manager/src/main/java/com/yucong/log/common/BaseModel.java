@@ -1,4 +1,4 @@
-package com.java.common.log.base;
+package com.yucong.log.common;
 
 import java.util.Date;
 

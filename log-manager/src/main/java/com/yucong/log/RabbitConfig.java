@@ -8,8 +8,8 @@ import org.springframework.boot.autoconfigure.AutoConfigureAfter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import com.java.common.log.constant.LogConstants;
 import com.yucong.log.constants.Env;
+import com.yucong.log.constants.LogConstants;
 
 @Configuration
 @AutoConfigureAfter(Env.class)

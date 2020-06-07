@@ -1,6 +1,6 @@
-package com.yucong.log.vo;
+package com.yucong.log.entity;
 
-import com.java.common.log.base.BaseModel;
+import com.yucong.log.common.BaseModel;
 
 /**
  * 接口请求日志
