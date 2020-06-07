@@ -1,8 +1,6 @@
 package com.yucong.log.dto;
 
 
-import javax.validation.constraints.NotNull;
-
 import com.java.util.json.FastJsonUtil;
 
 import io.swagger.annotations.ApiModel;
@@ -21,8 +19,6 @@ public class ListHttpRequestLogDTO extends PageInfo {
 	@ApiModelProperty(value = "请求URL")
 	private String requestUrl;
 	
-	// 2全部，1成功，0异常，-1业务失败，-2登陆失效，-3签名失败
-	@NotNull
 	@ApiModelProperty(value = "状态码：2全部，1成功， 0异常，-1业务异常，-2登录失效，-3签名失败",example = "2")
 	private Integer code = 2;
 	
