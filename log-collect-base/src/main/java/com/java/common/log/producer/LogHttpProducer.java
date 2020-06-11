@@ -42,7 +42,9 @@ public class LogHttpProducer {
 	public static void collect(String baseUrl,ServerExceptionLog log) {
 		String requestUrl = baseUrl + ADD_EXCEPTION_LOG_URL;
 		try {
-			String msg = HttpProxy.postJson(requestUrl, FastJsonUtil.toJson(log));
+			Map<String,String> headMap = new HashMap<String, String>();
+			headMap.put("sign", SignUtil.createSign(log,SignUtil.APP_KEY ));
+			String msg = HttpProxy.postJson(requestUrl, FastJsonUtil.toJson(log),headMap);
 			System.out.println("msg:" + msg);
 		} catch (IOException e) {
 			e.printStackTrace();
