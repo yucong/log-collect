@@ -227,14 +227,16 @@ function logout() {
 function edit_password() {
     var uid = $.cookie("u_id");
     $.ajax({
-        url: baseUrl + 'permission/sys/user/updateuserpassword',
-        type: "get",
+        url: baseUrl + 'sys/user/updatePwd',
+        type: "post",
         dataType: 'json',
-        data: {
+        contentType: "application/json; charset=utf-8",
+        data: JSON.stringify({
             id: uid,
+            username: $.cookie('u_name'),
             password: $("#txtOldPass").val(),
-            newpassword: $("#txtNewPass").val()
-        },
+            newPassword: $("#txtNewPass").val()
+        }),
         success: function (data) {
             if (data.code == 1) {
                 $.cookie("is_login", "", { path: "/", expires: -1 });

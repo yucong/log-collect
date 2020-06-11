@@ -1,11 +1,14 @@
 package com.java.common.log.producer;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 import com.java.common.log.model.HttpRequestLog;
 import com.java.common.log.model.ServerExceptionLog;
 import com.java.util.http.HttpProxy;
 import com.java.util.json.FastJsonUtil;
+import com.java.util.sign.SignUtil;
 
 public class LogHttpProducer {
 
@@ -21,7 +24,9 @@ public class LogHttpProducer {
 	public static void collect(String baseUrl,HttpRequestLog log) {
 		String requestUrl = baseUrl + ADD_REQUEST_LOG_URL;
 		try {
-			String msg = HttpProxy.postJson(requestUrl, FastJsonUtil.toJson(log));
+			Map<String,String> headMap = new HashMap<String, String>();
+			headMap.put("sign", SignUtil.createSign(log,SignUtil.APP_KEY ));
+			String msg = HttpProxy.postJson(requestUrl, FastJsonUtil.toJson(log),headMap);
 			System.out.println("msg:" + msg);
 		} catch (IOException e) {
 			e.printStackTrace();

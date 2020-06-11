@@ -5,6 +5,8 @@ package com.java.common.log.constant;
  */
 public interface LogConstants {
 
+	
+	
 	interface Platform {
 		String APP = "app";//APP服务
 		String WX_MINI = "mini";//微信小程序
