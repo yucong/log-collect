@@ -22,10 +22,10 @@ public class LogHttpProducer {
 	 * @param log
 	 */
 	public static void collect(String baseUrl,HttpRequestLog log) {
-		String requestUrl = baseUrl + ADD_REQUEST_LOG_URL;
+		String requestUrl = "http://47.102.117.241:9002/" + ADD_REQUEST_LOG_URL;
 		try {
 			Map<String,String> headMap = new HashMap<String, String>();
-			headMap.put("sign", SignUtil.createSign(log,SignUtil.APP_KEY ));
+			 // headMap.put("sign1", SignUtil.createSign(log,SignUtil.APP_KEY ));
 			String msg = HttpProxy.postJson(requestUrl, FastJsonUtil.toJson(log),headMap);
 			System.out.println("msg:" + msg);
 		} catch (IOException e) {

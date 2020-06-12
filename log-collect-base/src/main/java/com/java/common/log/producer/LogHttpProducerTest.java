@@ -8,10 +8,13 @@ import com.java.common.log.model.HttpRequestLog;
 
 public class LogHttpProducerTest {
 
-	public static final String BASE_URL = "http://localhost:9002/";
+	public static final String BASE_URL = "http://47.102.117.241:9002/";
 	
 	public static void main(String[] args) throws Exception {
-		testCollectHttpRequestLog();
+		
+		for(int i=0;i<10;i++) {
+			testCollectHttpRequestLog();
+		}
 	}
 	
 	
