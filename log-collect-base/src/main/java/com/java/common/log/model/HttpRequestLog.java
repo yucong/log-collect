@@ -25,7 +25,7 @@ public class HttpRequestLog {
 	// 服务器ID
 	private String serverIP;
 	// 接口请求参数
-	private String requestParam;
+	private Object requestParam;
 	// 接口响应参数
     private Object responseData;
     // 接口耗时
@@ -89,10 +89,10 @@ public class HttpRequestLog {
 	public void setServerIP(String serverIP) {
 		this.serverIP = serverIP;
 	}
-	public String getRequestParam() {
+	public Object getRequestParam() {
 		return requestParam;
 	}
-	public void setRequestParam(String requestParam) {
+	public void setRequestParam(Object requestParam) {
 		this.requestParam = requestParam;
 	}
 	public Object getResponseData() {

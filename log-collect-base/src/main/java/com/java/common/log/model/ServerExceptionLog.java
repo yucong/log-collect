@@ -25,7 +25,7 @@ public class ServerExceptionLog  {
 	// 服务端IP
 	private String serverIP;
 	// 请求参数
-	private String requestParam;
+	private Object requestParam;
 	// 响应参数
     private Object responseData;
     // 异常堆栈信息
@@ -109,10 +109,10 @@ public class ServerExceptionLog  {
 	public void setServerIP(String serverIP) {
 		this.serverIP = serverIP;
 	}
-	public String getRequestParam() {
+	public Object getRequestParam() {
 		return requestParam;
 	}
-	public void setRequestParam(String requestParam) {
+	public void setRequestParam(Object requestParam) {
 		this.requestParam = requestParam;
 	}
 	public Object getResponseData() {
