@@ -217,7 +217,7 @@ define(function (require) {
                             if (current_show_data[i].method == 'POST') {
                                 var request = current_show_data[i].requestParam;
                                 if (request && request != '') {
-                                    $("#attach_" + i).jsonViewer(JSON.parse(request), { collapsed: true, withQuotes: true });
+                                    $("#attach_" + i).jsonViewer(request, { collapsed: true, withQuotes: true });
                                 }
                             }
                         }
