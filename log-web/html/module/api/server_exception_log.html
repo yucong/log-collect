@@ -19,6 +19,7 @@
     <link href="../../../css/plugins/json-viewer/jquery.json-viewer.css" rel="stylesheet" />
     <link href="../../../css/style-main.css" rel="stylesheet">
     <link href="../../../css/style.css" rel="stylesheet">
+    <link href="../../../css/plugins/date/daterangepicker-bs3.css" rel="stylesheet">
     <style>
         .enable {
             margin: auto;
@@ -47,6 +48,18 @@
                     <div class="row">
                         <div id="search-toolbar" class="search-toolbar">
                             <div class="form-inline" role="form">
+
+                                <div class="form-group">
+                                    <input type="hidden" id="search_time_begin" name="search_time_begin">
+                                    <input type="hidden" id="search_time_end" name="search_time_end">
+
+                                    <div id="reportrange" class="btn btn-white pull-right" style="padding: 6px 22px;">
+                                        <i class="fa fa-calendar"></i>
+                                        <span></span>
+                                        <b class="caret"></b>
+                                    </div>
+                                </div>
+
                                 <div class="form-group">
                                     <input type="text" class="form-control" style='width:150px' ; id="s_ip" placeholder="请求IP">
                                     <input type="text" class="form-control" style='width:150px' ; id="s_request" placeholder="请求URL">

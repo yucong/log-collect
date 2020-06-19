@@ -8,8 +8,8 @@ define(function (require) {
     require('baidueditor');
     window['ZeroClipboard'] = require('zeroclipboard');
     require('multiselect');
-
     require('json-viewer');
+    require('daterangepicker');
 
     $.module("Log.serverException", function () {
         var search_aggregate_status = -1;
@@ -37,6 +37,8 @@ define(function (require) {
                 var errLevel = $("#search_errLevel").val();
                 var platform = $("#search_platform").val();
                 var env = $("#search_env").val();
+                var search_time_begin = $("#search_time_begin").val();
+                var search_time_end = $("#search_time_end").val();
 
                 //将platform保存到webStorage中
                 if(typeof(Storage) != "undefined"){
@@ -62,7 +64,9 @@ define(function (require) {
                         userId: userId ? userId : null,
                         deviceType: deviceType,
                         errLevel: errLevel,
-                        env: env
+                        env: env,
+                        beginTime : search_time_begin,
+                        endTime : search_time_end
                     },
                     success: function (data) {
                         var obj = {
@@ -139,6 +143,10 @@ define(function (require) {
                         that.loadData();
                     }
                 });
+
+                //初始化时间控件
+                SYS.Tool.initDaterangSearch('reportrange', 'search_time_begin', 'search_time_end');
+
                 $("body").on("click", "#errMsg_h", function () {
                     var data = $(this).html();
                     $("#data").val(data);
