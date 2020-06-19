@@ -48,24 +48,17 @@
                         <div id="search-toolbar" class="search-toolbar">
                             <div class="form-inline" role="form">
                                 <div class="form-group">
-                                    <input type="text" class="form-control" style='width:150px' ; id="s_ip" placeholder="请求IP">
-                                    <input type="text" class="form-control" style='width:150px' ; id="s_request" placeholder="请求URL">
                                     <input type="text" class="form-control" style='width:150px' ; id="search_userId" placeholder="用户ID">
-                                    <select class="form-control" id="search_deviceType">
-                                        <option value="">设备类型</option>
-                                        <option value="ios">IOS</option>
-                                        <option value="android">Android</option>
-                                        <option value="web">WEB</option>
+                                    <select class="form-control" id="search_env">
+                                        <option value="">环境</option>
+                                        <option value="dev">开发环境</option>
+                                        <option value="test">测试环境</option>
+                                        <option value="prod">生产环境</option>
                                     </select>
-                                    <select class="form-control" id="search_errLevel">
+                                    <select class="form-control" id="search_level">
                                         <option value="">错误等级</option>
                                         <option value="error">error</option>
                                         <option value="warn">warn</option>
-                                    </select>
-                                    <select class="form-control" id="search_method">
-                                        <option value="">请求方式</option>
-                                        <option value="GET">GET</option>
-                                        <option value="POST">POST</option>
                                     </select>
                                 </div>
                                 <div class="form-group">

@@ -20,26 +20,18 @@ define(function (require) {
             /*初始化列表数据*/
             loadData: function (pageNumber, pageSize) {
                 var that = this;
-                var requestUrl = $("#s_request").val();
-                var clientIP = $("#s_ip").val();
-                var code = $("#search_state").val();
-                var method = $("#search_method").val();
+                var env = $("#search_env").val();
                 var userId = +$("#search_userId").val();
-                var deviceType = $("#search_deviceType").val();
-                var errLevel = $("#search_errLevel").val();
+                var level = $("#search_level").val();
                 
                 SYS.Core.ajaxGet({
                     url: "businessAbnormalLog/list",
                     data: {
                         page: pageNumber ? pageNumber : 1,
                         size: pageSize ? pageSize : 10,
-                        clientIP: clientIP,
-                        requestUrl: requestUrl,
-                        code: code,
-                        method: method,
+                        env: env,
                         userId: userId ? userId : null,
-                        deviceType: deviceType,
-                        errLevel: errLevel
+                        level: level
                     },
                     success: function (data) {
                         var obj = {
@@ -65,18 +57,19 @@ define(function (require) {
                             idField: '_id',
                             data: obj.data,
                             columns: [
-                                { field: 'id', title: 'ID', align: 'center' },
+                                { field: 'autoId', title: 'ID', align: 'center' },
                                 { field: 'userId', title: '用户ID', align: 'center' },
-                                { field: 'businessDesc', title: '业务描述', align: 'center' },
-                                { field: 'errorDesc', title: '异常描述', align: 'center' },
+                                { field: 'env', title: '环境', align: 'center' },
+                                { field: 'description', title: '业务描述', align: 'center' },
+                                { field: 'probableCause', title: '异常描述', align: 'center' },
                                 { field: 'level', title: '错误级别', align: 'center' },
                                 {
-                                    field: 'createTime', title: '请求时间', align: 'center',
+                                    field: 'createTime', title: '发生时间', align: 'center',
                                     formatter: function (createTime) {
                                         return SYS.Tool.formatterByDaterule(createTime, "yyyy-mm-dd hh:mm:ss");
                                     }
-                                },
-                                {
+                                }
+                                /*{
                                     field: 'do', title: '操作', align: 'center',
                                     formatter: function (value, row, index) {
                                         var html = '';
@@ -85,7 +78,7 @@ define(function (require) {
                                         }
                                         return html;
                                     }
-                                }
+                                }*/
                             ],
                             onPageChange: function (number, size) {
                                 that.loadData(number, size);

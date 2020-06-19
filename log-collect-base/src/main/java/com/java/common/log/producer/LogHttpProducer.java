@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.java.common.log.model.BusinessAbnormalLog;
 import com.java.common.log.model.HttpRequestLog;
 import com.java.common.log.model.ServerExceptionLog;
 import com.java.util.http.HttpProxy;
@@ -14,6 +15,7 @@ public class LogHttpProducer {
 
 	private static final String ADD_REQUEST_LOG_URL = "/log/httpRequestLog/add";
 	private static final String ADD_EXCEPTION_LOG_URL = "/log/serverExceptionLog/add";
+	private static final String ADD_ABNORMAL_LOG_URL = "/log/businessAbnormalLog/add";
 	
 	/**
 	 * 收集http请求日志
@@ -41,6 +43,25 @@ public class LogHttpProducer {
 	 */
 	public static void collect(String baseUrl,ServerExceptionLog log) {
 		String requestUrl = baseUrl + ADD_EXCEPTION_LOG_URL;
+		try {
+			Map<String,String> headMap = new HashMap<String, String>();
+			headMap.put("sign", SignUtil.createSign(log,SignUtil.APP_KEY ));
+			String msg = HttpProxy.postJson(requestUrl, FastJsonUtil.toJson(log),headMap);
+			System.out.println("msg:" + msg);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	
+	/**
+	 * 收集业务异常日志
+	 * 
+	 * @param baseUrl
+	 * @param log
+	 */
+	public static void collect(String baseUrl,BusinessAbnormalLog log) {
+		String requestUrl = baseUrl + ADD_ABNORMAL_LOG_URL;
 		try {
 			Map<String,String> headMap = new HashMap<String, String>();
 			headMap.put("sign", SignUtil.createSign(log,SignUtil.APP_KEY ));
