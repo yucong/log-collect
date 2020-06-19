@@ -98,19 +98,27 @@ define(function (require) {
                                         return requestUrl + " " + row.method; 
                                     }
                                 },
-                                // { field: 'serverIP', title: '服务器IP', align: 'center' },
-                                //{ field: 'method', title: '请求方式', align: 'center' },
-                                { field: 'env', title: '环境', align: 'center' },
-                                { field: 'clientIP', title: '请求IP', align: 'center' },
+                                { field: 'env', title: '环境', align: 'center'  },
+                                { field: 'clientIP', title: '请求IP', align: 'center'  },
                                 { field: 'userId', title: '用户ID', align: 'center' },
-                                { field: 'deviceType', title: '设备类型', align: 'center' },
-                                // { field: 'platform', title: '错误来源', align: 'center' },
+                                { field: 'deviceType', title: '设备类型', align: 'center'  },
                                 {
                                     field: 'errMsg', title: '错误信息', align: 'left',
-                                    formatter: function (errMsg) {
-                                        return '<p style="color:red" id="errMsg_h">' + errMsg + '</P>';
+                                    formatter : function(value, row, index, field){
+                                        return "<span id='errMsg_h' style='color:red;display: block;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;' title='" + value + "'>" + value + "</span>";
+                                    },
+                                    cellStyle : function(value, row, index, field){
+                                        return {
+                                            css: {
+                                                "white-space": "nowrap",
+                                                "text-overflow": "ellipsis",
+                                                "overflow": "hidden",
+                                                "max-width":"150px"
+                                            }
+                                        };
                                     }
                                 },
+
                                 {
                                     field: 'createTime', title: '发生时间', align: 'center',
                                     formatter: function (createTime) {
