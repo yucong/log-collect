@@ -14,6 +14,13 @@ import com.java.util.http.HttpProxy;
 import com.java.util.json.FastJsonUtil;
 import com.java.util.sign.SignUtil;
 
+/**
+ * <p>优化升级：日志服务器宕机，可能会导致线程中队列里面的任务堆积，占用系统内存，需要模拟Hystrix的熔断来避免此情况的发生</p>
+ * 
+ * 1 5分钟超时次数达到100次，将不再生产日志
+ * 2 5分钟后，恢复生产日志
+ *
+ */
 public class LogHttpProducerV2 {
 	
 	//日志记录操作延时
