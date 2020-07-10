@@ -104,7 +104,7 @@ public class LogHttpProducerV2 {
 					Map<String,String> headMap = new HashMap<String, String>();
 					headMap.put("sign", SignUtil.createSign(log,SignUtil.APP_KEY ));
 					String msg = HttpProxy.postJson(requestUrl, FastJsonUtil.toJson(log),headMap);
-					//System.out.println("msg:" + msg);
+					System.out.println("msg:" + msg);
 				} catch (IOException e) {
 					e.printStackTrace();
 					num++;
