@@ -4,13 +4,13 @@ import com.java.common.log.model.BusinessAbnormalLog;
 
 public class LogHttpProducerTest2 {
 
-	public static final String BASE_URL = "http://47.102.126.118:9002/";
+	public static final String BASE_URL = "http://47.102.126.119:9002/";
 	
 	public static void main(String[] args) throws Exception {
 		 //testCollectHttpRequestLog();
 		
 		long s1 = System.currentTimeMillis();
-		for(int i=0;i<10;i++) {
+		for(int i=0;i<3;i++) {
 			testCollectBusinessAbnormalLog();
 		}
 		long s2 = System.currentTimeMillis();

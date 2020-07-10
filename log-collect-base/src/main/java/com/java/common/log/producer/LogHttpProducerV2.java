@@ -20,11 +20,13 @@ public class LogHttpProducerV2 {
     private final int OPERATE_DELAY_TIME = 10;
 
     //异步操作记录日志的线程池
-    private ScheduledThreadPoolExecutor executor = new ScheduledThreadPoolExecutor(10);
+    private ScheduledThreadPoolExecutor executor = new ScheduledThreadPoolExecutor(5);
 	
 	private static final String ADD_REQUEST_LOG_URL = "/log/httpRequestLog/add";
 	private static final String ADD_EXCEPTION_LOG_URL = "/log/serverExceptionLog/add";
 	private static final String ADD_ABNORMAL_LOG_URL = "/log/businessAbnormalLog/add";
+	
+	private int num;
 	
 	/**
 	 * 收集http请求日志
@@ -47,6 +49,7 @@ public class LogHttpProducerV2 {
         			System.out.println("msg:" + msg);
         		} catch (IOException e) {
         			e.printStackTrace();
+        			num++;
         		}
             }
         };
@@ -74,6 +77,7 @@ public class LogHttpProducerV2 {
 					System.out.println("msg:" + msg);
 				} catch (IOException e) {
 					e.printStackTrace();
+					num++;
 				}
 				
             }
@@ -100,14 +104,20 @@ public class LogHttpProducerV2 {
 					Map<String,String> headMap = new HashMap<String, String>();
 					headMap.put("sign", SignUtil.createSign(log,SignUtil.APP_KEY ));
 					String msg = HttpProxy.postJson(requestUrl, FastJsonUtil.toJson(log),headMap);
-					System.out.println("msg:" + msg);
+					//System.out.println("msg:" + msg);
 				} catch (IOException e) {
 					e.printStackTrace();
+					num++;
 				}
 				
             }
         };
 		executor.schedule(task, OPERATE_DELAY_TIME, TimeUnit.MILLISECONDS);
+	}
+	
+	
+	public int getNum() {
+		return num;
 	}
 	
 	
