@@ -198,7 +198,7 @@ $.module('SYS.Core', function () {
                     }
                 },
                 error: function () {
-                    console.log("error");
+                    console.log("ajaxGet is error");
                 },
                 complete: function () {
                     that.closeLoading();

@@ -206,7 +206,7 @@ define(function (require) {
 
                                 return obj;
                             }
-                            if (current_show_data[i].method == 'GET') {
+                            /*if (current_show_data[i].method == 'GET') {
                                 var request = current_show_data[i].requestParam;
                                 var object = getQueryObject(request);
                                 object = JSON.stringify(object);
@@ -219,6 +219,10 @@ define(function (require) {
                                 if (request && request != '') {
                                     $("#attach_" + i).jsonViewer(request, { collapsed: true, withQuotes: true });
                                 }
+                            }*/
+                            var request = current_show_data[i].requestParam;
+                            if (request && request != '') {
+                                $("#attach_" + i).jsonViewer(request, { collapsed: true, withQuotes: true });
                             }
                         }
 
