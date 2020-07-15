@@ -1,6 +1,5 @@
 package com.java.common.log.producer;
 
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -30,7 +29,7 @@ public class LogHttpProducer {
 			headMap.put("sign", SignUtil.createSign(log,SignUtil.APP_KEY ));
 			String msg = HttpProxy.postJson(requestUrl, FastJsonUtil.toJson(log),headMap);
 			System.out.println("msg:" + msg);
-		} catch (IOException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
@@ -48,7 +47,7 @@ public class LogHttpProducer {
 			headMap.put("sign", SignUtil.createSign(log,SignUtil.APP_KEY ));
 			String msg = HttpProxy.postJson(requestUrl, FastJsonUtil.toJson(log),headMap);
 			System.out.println("msg:" + msg);
-		} catch (IOException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
@@ -67,7 +66,7 @@ public class LogHttpProducer {
 			headMap.put("sign", SignUtil.createSign(log,SignUtil.APP_KEY ));
 			String msg = HttpProxy.postJson(requestUrl, FastJsonUtil.toJson(log),headMap);
 			System.out.println("msg:" + msg);
-		} catch (IOException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
