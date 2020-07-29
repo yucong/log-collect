@@ -62,7 +62,17 @@ define(function (require) {
                                 { field: 'env', title: '环境', align: 'center' },
                                 { field: 'description', title: '业务描述', align: 'center' },
                                 { field: 'probableCause', title: '异常描述', align: 'center' },
-                                { field: 'level', title: '错误级别', align: 'center' },
+                                { field: 'level', title: '错误级别', align: 'center',
+                                    formatter: function (level) {
+                                        if(level == 'error') {
+                                            return  "<span class='label label-danger'>error</span>";
+                                        } else if(level == 'warn') {
+                                            return  "<span class='label label-warning'>warn</span>";
+                                        } else {
+                                            return "-";
+                                        }
+                                    }
+                                },
                                 {
                                     field: 'createTime', title: '发生时间', align: 'center',
                                     formatter: function (createTime) {

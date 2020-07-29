@@ -20,7 +20,9 @@ public class LogHttpProducerTest2 {
 		long s2 = System.currentTimeMillis();
 		System.out.println("耗时：" + (s2 - s1));*/
 		
-		testCollectServerExceptionLog();
+		for(int i=0;i<3;i++) {
+			testCollectServerExceptionLog();
+		}
 	}
 	
 	
