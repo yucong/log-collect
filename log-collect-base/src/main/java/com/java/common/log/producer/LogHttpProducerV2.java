@@ -8,6 +8,7 @@ import java.util.concurrent.TimeUnit;
 
 import com.java.common.log.model.BusinessAbnormalLog;
 import com.java.common.log.model.HttpRequestLog;
+import com.java.common.log.model.LiveCallbackLog;
 import com.java.common.log.model.ServerExceptionLog;
 import com.java.util.http.HttpProxy;
 import com.java.util.json.FastJsonUtil;
@@ -31,11 +32,13 @@ public class LogHttpProducerV2 {
 	private static final String ADD_REQUEST_LOG_URL = "/log/httpRequestLog/add";
 	private static final String ADD_EXCEPTION_LOG_URL = "/log/serverExceptionLog/add";
 	private static final String ADD_ABNORMAL_LOG_URL = "/log/businessAbnormalLog/add";
+	private static final String ADD_LIVE_CALLBACK_LOG_URL = "/log/liveCallbackLog/add";
+	
 	
 	private int num;
 	
 	/**
-	 * 收集http请求日志
+	 * <p>收集http请求日志
 	 * 
 	 * @param baseUrl
 	 * @param log
@@ -63,7 +66,7 @@ public class LogHttpProducerV2 {
 	}
 	
 	/**
-	 * 收集服务器异常日志
+	 * <p>收集服务器异常日志
 	 * 
 	 * @param baseUrl
 	 * @param log
@@ -93,7 +96,7 @@ public class LogHttpProducerV2 {
 	
 	
 	/**
-	 * 收集业务异常日志
+	 * <p>收集业务异常日志
 	 * 
 	 * @param baseUrl
 	 * @param log
@@ -106,6 +109,35 @@ public class LogHttpProducerV2 {
             public void run() {
             	
 				String requestUrl = baseUrl + ADD_ABNORMAL_LOG_URL;
+				try {
+					Map<String,String> headMap = new HashMap<String, String>();
+					headMap.put("sign", SignUtil.createSign(log,SignUtil.APP_KEY ));
+					String msg = HttpProxy.postJson(requestUrl, FastJsonUtil.toJson(log),headMap);
+					System.out.println("msg:" + msg);
+				} catch (Exception e) {
+					e.printStackTrace();
+					num++;
+				}
+				
+            }
+        };
+		executor.schedule(task, OPERATE_DELAY_TIME, TimeUnit.MILLISECONDS);
+	}
+	
+	/**
+	 * <p>收集直播回调日志
+	 * 
+	 * @param baseUrl
+	 * @param log
+	 */
+	public void collect(String baseUrl,LiveCallbackLog log) {
+		
+		TimerTask task = new TimerTask() {
+            
+			@Override
+            public void run() {
+            	
+				String requestUrl = baseUrl + ADD_LIVE_CALLBACK_LOG_URL;
 				try {
 					Map<String,String> headMap = new HashMap<String, String>();
 					headMap.put("sign", SignUtil.createSign(log,SignUtil.APP_KEY ));

@@ -67,7 +67,7 @@ define(function (require) {
                                         if(level == 'error') {
                                             return  "<span class='label label-danger'>error</span>";
                                         } else if(level == 'warn') {
-                                            return  "<span class='label label-warning'>warn</span>";
+                                            return  "<span class='label label-primary'>warn</span>";
                                         } else {
                                             return "-";
                                         }
