@@ -27,7 +27,7 @@
 		<dependency>
 			<groupId>com.java</groupId>
   			<artifactId>common-util</artifactId>
-  			<version>1.0.5</version>
+  			<version>1.0.6</version>
 		</dependency>
 
 	</dependencies>
