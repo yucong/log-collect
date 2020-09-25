@@ -16,7 +16,7 @@ public interface LogConstants {
 	
 	interface DeviceType {
 		String ANDROID = "android";//安卓
-		String IOS = "ios";//苹果
+		String IOS = "iOS";//苹果
 		String WEB = "web";//网页
 		String UNKONW = "unkonw";//未知
 	}
