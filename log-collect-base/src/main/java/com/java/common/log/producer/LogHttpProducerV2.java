@@ -54,8 +54,8 @@ public class LogHttpProducerV2 {
         		try {
         			Map<String,String> headMap = new HashMap<String, String>();
         			headMap.put("sign", SignUtil.createSign(log,SignUtil.APP_KEY ));
-        			String msg = HttpProxy.postJson(requestUrl, FastJsonUtil.toJson(log),headMap);
-        			System.out.println("msg:" + msg);
+        			HttpProxy.postJson(requestUrl, FastJsonUtil.toJson(log),headMap);
+
         		} catch (Exception e) {
         			e.printStackTrace();
         			num++;
@@ -82,8 +82,8 @@ public class LogHttpProducerV2 {
 				try {
 					Map<String,String> headMap = new HashMap<String, String>();
 					headMap.put("sign", SignUtil.createSign(log,SignUtil.APP_KEY ));
-					String msg = HttpProxy.postJson(requestUrl, FastJsonUtil.toJson(log),headMap);
-					System.out.println("msg:" + msg);
+					HttpProxy.postJson(requestUrl, FastJsonUtil.toJson(log),headMap);
+
 				} catch (Exception e) {
 					e.printStackTrace();
 					num++;
@@ -112,8 +112,8 @@ public class LogHttpProducerV2 {
 				try {
 					Map<String,String> headMap = new HashMap<String, String>();
 					headMap.put("sign", SignUtil.createSign(log,SignUtil.APP_KEY ));
-					String msg = HttpProxy.postJson(requestUrl, FastJsonUtil.toJson(log),headMap);
-					System.out.println("msg:" + msg);
+					HttpProxy.postJson(requestUrl, FastJsonUtil.toJson(log),headMap);
+
 				} catch (Exception e) {
 					e.printStackTrace();
 					num++;
@@ -141,8 +141,8 @@ public class LogHttpProducerV2 {
 				try {
 					Map<String,String> headMap = new HashMap<String, String>();
 					headMap.put("sign", SignUtil.createSign(log,SignUtil.APP_KEY ));
-					String msg = HttpProxy.postJson(requestUrl, FastJsonUtil.toJson(log),headMap);
-					System.out.println("msg:" + msg);
+					HttpProxy.postJson(requestUrl, FastJsonUtil.toJson(log),headMap);
+
 				} catch (Exception e) {
 					e.printStackTrace();
 					num++;
